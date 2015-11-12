@@ -1,0 +1,21 @@
+1. smbl_function_definition.c:
+                              a. int deal_xxx(int node_index);
+                              b. int add_xxx_table_num();
+                              c. int print_xxx_table();
+                              d. int print_xxx_infor(int index);
+
+2. smbl_function_definition.h:
+                              a. struct xxx_infor{};
+                              b. int deal_xxx(int node_index);
+                              c. int add_xxx_table_num();
+                              d. int print_xxx_table();
+                              e. int print_xxx_infor(int index);
+
+3. compiler_state.c:
+                    a. add the initialization part of the xxx_table
+
+4. compiler_state.h:
+                    a. add the xxx_table for the struct compiler_state
+                    b. add xxx_TABLE_NUM
+
+

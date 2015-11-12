@@ -1,0 +1,446 @@
+before initialize compiler state
+81818181: node_table:b77d9008
+81818181: symbol_table:b7798008
+lib/compiler_state.c:151 86d1170
+after  initialize compiler state
+================compiler_state start===================
+c_file_str:d.c
+symbol_max_number:65536
+symbol_number:0
+node_max_number:65536
+node_number:0
+need_dot_file:0
+dot_file_str:
+need_infor:0
+symbol_table:86d1170
+node_table:b77d9008
+declaration_secifiers_table:86d1170
+================compiler_state end ====================
+type_specifier: INT
+!!!a
+291:yylineno:1
+check_identifier end
+declaration_specifiers: type_specifier
+direct_declarator: IDENTIFIER
+direct_declarator: direct_declarator '[' ']'
+direct_declarator: direct_declarator '[' ']'
+direct_declarator: direct_declarator '[' ']'
+declarator: direct_declarator
+init_declarator: declarator
+init_declarator_list: init_declarator
+declaration: declaration_specifiers init_declarator_list ';'
+0318: 10
+deal_type_specifier node_inrule_num 3
+right!!!
+haha node_type 28
+haha2 inrule_num:2
+haha2 inrule_num:2
+haha2 inrule_num:2
+haha2 inrule_num:0
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:3 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
+infor_ptr->node_ptr=86f7728
+infor_ptr->node_ptr=86f7728
+infor_ptr->smbl_ptr=86f7738
+infor_ptr->smbl_ptr=86f7738
+3089
+haha49
+external_declaration: declaration
+-------------------------translation_unit: external_declaration
+----------print_node_table:
+node_index node_parent node_child_num node_type_str node_symbol_index node_line_num node_compound_id
+id(0):type(type_specifier_type[95]):index(0):parent(2):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
+
+id(1):type(IDENTIFIER_type[49]):index(1):parent(3):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(a[0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(2):type(declaration_specifiers_type[21]):index(2):parent(10):left_brother(-1):right_brother(9):brother_num(2):brother_seq(0):first_child(0):child_num(1):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
+
+id(3):type(direct_declarator_type[28]):index(3):parent(4):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(1):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(4):type(direct_declarator_type[28]):index(4):parent(5):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(3):child_num(1):inrule_num(2):symbol_index([2]):infor_index(-1):line_num(1):compound_id(0):
+
+id(5):type(direct_declarator_type[28]):index(5):parent(6):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(4):child_num(1):inrule_num(2):symbol_index([2]):infor_index(-1):line_num(1):compound_id(0):
+
+id(6):type(direct_declarator_type[28]):index(6):parent(7):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(5):child_num(1):inrule_num(2):symbol_index([2]):infor_index(-1):line_num(1):compound_id(0):
+
+id(7):type(declarator_type[23]):index(7):parent(8):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(6):child_num(1):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(8):type(init_declarator_type[54]):index(8):parent(9):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(7):child_num(1):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(9):type(init_declarator_list_type[53]):index(9):parent(10):left_brother(2):right_brother(-1):brother_num(2):brother_seq(1):first_child(8):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(10):type(declaration_type[22]):index(10):parent(11):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(2):child_num(2):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(11):type(external_declaration_type[39]):index(11):parent(12):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(10):child_num(1):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(12):type(translation_unit_type[91]):index(12):parent(-1):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(11):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+----------print_node_table!
++translation_unit_type node_id:12 child_number:1 inrule_num:0 line_num:1
+ +external_declaration_type node_id:11 child_number:1 inrule_num:1 line_num:1
+  +declaration_type node_id:10 child_number:2 inrule_num:1 line_num:1
+   +declaration_specifiers_type node_id:2 child_number:1 inrule_num:3 line_num:1
+    +type_specifier_type node_id:0 child_number:0 inrule_num:3 line_num:1
+   +init_declarator_list_type node_id:9 child_number:1 inrule_num:0 line_num:1
+    +init_declarator_type node_id:8 child_number:1 inrule_num:1 line_num:1
+     +declarator_type node_id:7 child_number:1 inrule_num:1 line_num:1
+      +direct_declarator_type node_id:6 child_number:1 inrule_num:2 line_num:1
+       +direct_declarator_type node_id:5 child_number:1 inrule_num:2 line_num:1
+        +direct_declarator_type node_id:4 child_number:1 inrule_num:2 line_num:1
+         +direct_declarator_type node_id:3 child_number:1 inrule_num:0 line_num:1
+          +IDENTIFIER_type node_id:1 child_number:0 inrule_num:-1 line_num:1
+---------------------symbol_table:
+id(0):name(a):name_len(1):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(1):
+---------------------symbol_table!
+stack: 0 
+
+
+============================================
+= print declaration_specifiers_table       =
+============================================
+declaration_specifiers_table[0] start
+index:0
+storage_class_specifier none(0x00000000)
+type_specifier(0x00000003): signed default int index(0)
+type_qualifier(0x00000000): 
+function_specifier(0x00000000): 
+declaration_specifiers_table[0] end
+--------------------------------------------
+
+
+
+
+
+
+============================================
+= declarator_table                         =
+============================================
+declarator_table_num:1
+--------------------------------------------
+index:0 node_index:7 pointer_index:-1 direct_declarator_index:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= print direct_declarator_table            =
+============================================
+index:0
+is_IDENTIFIER:0
+node_index:-1
+number:4
+0. category:2 index1:0 index2:0
+1. category:2 index1:0 index2:0
+2. category:2 index1:0 index2:0
+3. category:0 index1:0 index2:0
+--------------------------------------------
+
+
+
+
+
+
+============================================
+= print compound_statement_table           =
+============================================
+
+
+
+
+
+
+============================================
+= block_item_table                         =
+============================================
+initializer_block_item_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= declaration_table                        =
+============================================
+declaration_table_num:1
+--------------------------------------------
+index:0 node_index:10 declaration_specifiers_index:0 static_assert_declaration_index:-1
+         init_declarator_num:1 init_declarator_infor->next_id:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= init_declarator_table                    =
+============================================
+init_declarator_table_num:1
+--------------------------------------------
+index:0 node_index:8 declarator_index:0 initializer_index:-1 next:-1
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= initializer_table                        =
+============================================
+initializer_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= initializer_list_table                   =
+============================================
+initializer_list_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= initializer_list_one_table               =
+============================================
+initializer_list_one_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= statement_table                          =
+============================================
+statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= labeled_statement_table                  =
+============================================
+labeled_statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= expression_statement_table               =
+============================================
+expression_statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= selection_statement_table                =
+============================================
+selection_statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= iteration_statement_table                =
+============================================
+iteration_statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= jump_statement_table                     =
+============================================
+jump_statement_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= expression_table                         =
+============================================
+expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= assignment_expression_table              =
+============================================
+assignment_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= conditional_expression_table             =
+============================================
+conditional_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= unary_expression_table                   =
+============================================
+unary_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= logical_or_expression_table              =
+============================================
+logical_or_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= logical_and_expression_table             =
+============================================
+logical_and_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= inclusive_or_expression_table            =
+============================================
+inclusive_or_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= exclusive_or_expression_table            =
+============================================
+exclusive_or_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= and_expression_table                     =
+============================================
+and_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= equality_expression_table                =
+============================================
+equality_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= relational_expression_table              =
+============================================
+relational_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= shift_expression_table                   =
+============================================
+shift_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= additive_expression_table                =
+============================================
+additive_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= multiplicative_expression_table          =
+============================================
+multiplicative_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= cast_expression_table                    =
+============================================
+cast_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= unary_expression_table                   =
+============================================
+unary_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= postfix_expression_table                 =
+============================================
+postfix_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= primary_expression_table                 =
+============================================
+primary_expression_table_num:0
+--------------------------------------------
+--------------------------------------------
+
+
+
+============================================
+= IDENTIFIER_table                         =
+============================================
+IDENTIFIER_table_num:1
+--------------------------------------------
+index:0 node_num:1 smbl_num:1 
+declaration_specifiers_table[0] start
+index:0
+storage_class_specifier none(0x00000000)
+type_specifier(0x00000003): signed default int index(0)
+type_qualifier(0x00000000): 
+function_specifier(0x00000000): 
+declaration_specifiers_table[0] end
+ node_id:1
+ smbl_id:0
+ smbl_name:a
+--------------------------------------------
+--------------------------------------------
+

@@ -1,0 +1,529 @@
+before initialize compiler state
+81818181: node_table:0xb7885008
+81818181: symbol_table:0xb7844008
+lib/compiler_state.c:151 0x8802170
+after  initialize compiler state
+================compiler_state start===================
+c_file_str:l3.c
+symbol_max_number:65536
+symbol_number:0
+node_max_number:65536
+node_number:0
+need_dot_file:0
+dot_file_str:
+need_infor:0
+symbol_table:0x8802170
+node_table:0xb7885008
+declaration_secifiers_table:0x8802170
+================compiler_state end ====================
+type_specifier: INT
+!!!main
+291:yylineno:1
+check_identifier end
+declaration_specifiers: type_specifier
+direct_declarator: IDENTIFIER
+direct_declarator: direct_declarator '(' ')'
+stack: 1 0 
+declarator: direct_declarator
+type_specifier: INT
+!!!a
+291:yylineno:3
+check_identifier end
+declaration_specifiers: type_specifier
+direct_declarator: IDENTIFIER
+declarator: direct_declarator
+!!!12
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+initializer: assignment_expression
+init_declarator: declarator '=' initializer
+init_declarator_list: init_declarator
+declaration: declaration_specifiers init_declarator_list ';'
+block_item: declaration
+block_item_list: block_item
+!!!jump1
+291:yylineno:4
+check_identifier end
+!!!a
+291:yylineno:5
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+assignment_operator: '='
+!!!a
+291:yylineno:5
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+!!!2
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: multiplicative_expression  mod  cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+assignment_expression: unary_expression assignment_operator assignment_expression
+expression: assignment_expression
+expression_statement: expression ';'
+statement: expression_statement
+labeled_statement: IDENTIFIER ':' statement
+statement: labeled_statement
+block_item: statement
+block_item_list: block_item_list block_item
+!!!jump1
+291:yylineno:6
+check_identifier end
+jump_statement: GOTO IDENTIFIER ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+!!!a
+291:yylineno:8
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+expression: assignment_expression
+stack: 2 1 0 
+!!!1
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+constant_expression: conditional_expression
+!!!a
+291:yylineno:11
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+assignment_operator: '='
+!!!a
+291:yylineno:11
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+!!!1
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: additive_expression '+' multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+assignment_expression: unary_expression assignment_operator assignment_expression
+expression: assignment_expression
+expression_statement: expression ';'
+statement: expression_statement
+labeled_statement: CASE constant_expression ':' statement
+statement: labeled_statement
+block_item: statement
+block_item_list: block_item
+jump_statement: BREAK ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+!!!2
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+constant_expression: conditional_expression
+!!!a
+291:yylineno:14
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+assignment_operator: '='
+!!!a
+291:yylineno:14
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+!!!1
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: additive_expression '-' multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+assignment_expression: unary_expression assignment_operator assignment_expression
+expression: assignment_expression
+expression_statement: expression ';'
+statement: expression_statement
+labeled_statement: CASE constant_expression ':' statement
+statement: labeled_statement
+block_item: statement
+block_item_list: block_item_list block_item
+jump_statement: BREAK ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+!!!3
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+constant_expression: conditional_expression
+!!!a
+291:yylineno:17
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+assignment_operator: '='
+!!!a
+291:yylineno:17
+check_identifier end
+primary_expression: IDENTIFIER
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+!!!2
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: multiplicative_expression '*' cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+assignment_expression: unary_expression assignment_operator assignment_expression
+expression: assignment_expression
+expression_statement: expression ';'
+statement: expression_statement
+labeled_statement: CASE constant_expression ':' statement
+statement: labeled_statement
+block_item: statement
+block_item_list: block_item_list block_item
+jump_statement: BREAK ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+jump_statement: RETURN ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+jump_statement: BREAK ';'
+statement: jump_statement
+labeled_statement: DEFAULT ':' statement
+statement: labeled_statement
+block_item: statement
+block_item_list: block_item_list block_item
+stack: 1 0 
+compound_statement(id:281): '{' block_item_list '}'
+statement: compound_statement
+selection_statement: SWITCH '(' expression ')' statement
+statement: selection_statement
+block_item: statement
+block_item_list: block_item_list block_item
+jump_statement: CONTINUE ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+!!!0
+constant: I_CONSTANT
+primary_expression: constant
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+expression: assignment_expression
+jump_statement: RETURN expression ';'
+statement: jump_statement
+block_item: statement
+block_item_list: block_item_list block_item
+stack: 0 
+compound_statement(id:311): '{' block_item_list '}'
+function_defination: declaration_specifiers declarator compound_statement
+deal_type_specifier node_inrule_num 3
+haha node_type 28
+haha2 inrule_num:12
+haha2 inrule_num:0
+3949
+IDENTIFIER: main node_type:49 node_inrule_num:-1 node_parent:3 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
+0513a
+infor_ptr->node_ptr=0x882d470
+infor_ptr->node_ptr=0x882d470
+infor_ptr->smbl_ptr=0x8832768
+infor_ptr->smbl_ptr=0x8832768
+3089
+haha49
+227a:310
+111
+333 0
+222
+0401 : is declaration
+0318: 32
+deal_type_specifier node_inrule_num 3
+right!!!
+haha node_type 28
+haha2 inrule_num:0
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:9 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
+0513a
+infor_ptr->node_ptr=0x8832878
+infor_ptr->node_ptr=0x8832878
+infor_ptr->smbl_ptr=0x8832888
+infor_ptr->smbl_ptr=0x8832888
+3089
+haha49
+node_index:29
+888
+node_index:29
+999
+0512xxx:symbol_a_table_num 1
+333 1
+0401 : is statement
+deal_statement:1055 inrule_num:0 node_index:71
+0522s
+0522a1
+0522a2
+0523a: child1_index:35 child2_index:69
+3949
+IDENTIFIER: jump1 node_type:49 node_inrule_num:-1 node_parent:70 node_parent_inrule_num:0 node_parent_type:60 node_brother_seq:0
+0513a
+infor_ptr->node_ptr=0x8832958
+infor_ptr->node_ptr=0x8832958
+infor_ptr->smbl_ptr=0x8832968
+infor_ptr->smbl_ptr=0x8832968
+deal_statement:1055 inrule_num:2 node_index:69
+deal_expression_statement 0403
+0513bb
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:37 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
+0513a
+0513xxx
+symbol_a_find: 1
+0512ned_str_name:a
+cur_str_name:a
+a
+0512xxx
+infor_ptr->node_ptr=0x8832a50
+infor_ptr->node_ptr=0x8832a50
+infor_ptr->smbl_ptr=0x8832a60
+infor_ptr->smbl_ptr=0x8832a60
+0513bb
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:43 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
+0513a
+0513xxx
+symbol_a_find: 1
+0512ned_str_name:a
+cur_str_name:a
+a
+0512xxx
+infor_ptr->node_ptr=0x8832c40
+infor_ptr->node_ptr=0x8832c40
+infor_ptr->smbl_ptr=0x8832c50
+infor_ptr->smbl_ptr=0x8832c50
+
+0515x1 1
+
+0515x1 0
+0518 expression_node_index:67
+0522a3
+333 2
+0401 : is statement
+deal_statement:1055 inrule_num:5 node_index:75
+333 3
+0401 : is statement
+deal_statement:1055 inrule_num:3 node_index:283
+0513bb
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:78 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
+0513a
+0513xxx
+symbol_a_find: 1
+0512ned_str_name:a
+cur_str_name:a
+a
+0512xxx
+infor_ptr->node_ptr=0x8832f38
+infor_ptr->node_ptr=0x8832f38
+infor_ptr->smbl_ptr=0x8832f48
+infor_ptr->smbl_ptr=0x8832f48
+
+0515x1 2
+0518 expression_node_index:94
+deal_statement:1055 inrule_num:1 node_index:281
+227a:280
+111
+333 4
+222
+0401 : is statement
+deal_statement:1055 inrule_num:0 node_index:149
+0522s
+deal_statement:1055 inrule_num:2 node_index:147
+deal_expression_statement 0403
+0513bb
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:114 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
+0513a
+0513xxx
+symbol_a_find: 1
+0512ned_str_name:a
+cur_str_name:a
+a
+0512xxx
+infor_ptr->node_ptr=0x88330b0
+infor_ptr->node_ptr=0x88330b0
+infor_ptr->smbl_ptr=0x88330c0
+infor_ptr->smbl_ptr=0x88330c0
+0513bb
+3949
+IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:120 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
+0513a
+0513xxx
+symbol_a_find: 1
+0512ned_str_name:a
+cur_str_name:a
+a
+0512xxx
+infor_ptr->node_ptr=0x88332a0
+infor_ptr->node_ptr=0x88332a0
+infor_ptr->smbl_ptr=0x88332b0
+infor_ptr->smbl_ptr=0x88332b0
+
+0515x1 4
+
+0515x1 3
+0518 expression_node_index:145
+333 5
+0401 : is statement
+deal_statement:1055 inrule_num:5 node_index:153
+333 6
+0401 : is statement
+deal_statement:1055 inrule_num:0 node_index:209
+0522s
+deal_statement:1055 inrule_num:2 no

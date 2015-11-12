@@ -1,0 +1,10 @@
+================compiler_state start===================
+c_file_str:2.c
+symbol_max_number:65536
+symbol_number:0
+node_max_number:65536
+node_number:0
+need_dot_file:0
+dot_file_str:
+need_infor:0
+================compiler_state end ====================

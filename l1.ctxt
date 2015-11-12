@@ -1,0 +1,30 @@
+before initialize compiler state
+81818181: node_table:0xb77f1008
+81818181: symbol_table:0xb77b0008
+lib/compiler_state.c:151 0x80e7170
+after  initialize compiler state
+================compiler_state start===================
+c_file_str:l1.c
+symbol_max_number:65536
+symbol_number:0
+node_max_number:65536
+node_number:0
+need_dot_file:0
+dot_file_str:
+need_infor:0
+symbol_table:0x80e7170
+node_table:0xb77f1008
+declaration_secifiers_table:0x80e7170
+================compiler_state end ====================
+type_specifier: INT
+!!!main
+291:yylineno:1
+check_identifier end
+declaration_specifiers: type_specifier
+direct_declarator: IDENTIFIER
+direct_declarator: direct_declarator '(' ')'
+stack: 1 0 
+declarator: direct_declarator
+!!!jump1
+291:yylineno:3
+check_identifier end

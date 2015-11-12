@@ -1,0 +1,6 @@
+cbison.y 中调用 smbl_function_definition.c:3406:smbl_function_definition函数
+该函数中3475调用deal_compound_statement_infor
+deal_compound_statement_infor函数在deal_instruction.c:1487
+
+
+

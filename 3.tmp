@@ -1,0 +1,144 @@
+need graph, name:3.dot
+before initialize compiler state
+after  initialize compiler state
+================compiler_state start===================
+c_file_str:3.c
+symbol_max_number:65536
+symbol_number:0
+node_max_number:65536
+node_number:0
+need_dot_file:1
+dot_file_str:3.dot
+need_infor:0
+================compiler_state end ====================
+type_specifier: CHAR
+declaration_specifiers: type_specifier
+!!!p
+291:yylineno:1
+check_identifier end
+pointer: '*'
+direct_declarator: IDENTIFIER
+declarator: pointer direct_declarator
+!!!"hello"
+string: STRING_LITERAL
+primary_expression: string
+postfix_expression: primary_expression
+unary_expression: postfix_expression
+cast_expression: unary_expression
+multiplicative_expression: cast_expression
+additive_expression: multiplicative_expression
+shift_expression: additive_expression
+relational_expression: shift_expression
+equality_expression: relational_expression
+and_expression: equality_expression
+exclusive_or_expression: and_expression
+inclusive_or_expression: exclusive_or_expression
+logical_and_expression: inclusive_or_expression
+logical_or_expression: logical_and_expression
+conditional_expression: logical_or_expression
+assignment_expression: conditional_expression
+initializer: assignment_expression
+init_declarator: declarator '=' initializer
+init_declarator_list: init_declarator
+declaration: declaration_specifiers init_declarator_list ';'
+external_declaration: declaration
+-------------------------translation_unit: external_declaration
+----------print_node_table:
+node_index node_parent node_child_num node_type_str node_symbol_index node_line_num node_compound_id
+id(0):type(type_specifier_type[95]):index(0):parent(1):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(1):type(declaration_specifiers_type[21]):index(1):parent(27):left_brother(-1):right_brother(26):brother_num(2):brother_seq(0):first_child(0):child_num(1):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
+
+id(2):type(not_know_type[0]):index(2):parent(4):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(p[0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(3):type(pointer_type[70]):index(3):parent(5):left_brother(-1):right_brother(4):brother_num(2):brother_seq(0):first_child(-1):child_num(0):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
+
+id(4):type(direct_declarator_type[28]):index(4):parent(5):left_brother(3):right_brother(-1):brother_num(2):brother_seq(1):first_child(2):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(5):type(declarator_type[23]):index(5):parent(25):left_brother(-1):right_brother(24):brother_num(2):brother_seq(0):first_child(3):child_num(2):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(6):type(STRING_LITERAL_type[75]):index(6):parent(7):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index("hello"[1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(7):type(string_type[83]):index(7):parent(8):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(6):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(8):type(primary_expression_type[72]):index(8):parent(9):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(7):child_num(1):inrule_num(2):symbol_index([2]):infor_index(-1):line_num(1):compound_id(0):
+
+id(9):type(postfix_expression_type[71]):index(9):parent(10):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(8):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(10):type(unary_expression_type[96]):index(10):parent(11):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(9):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(11):type(cast_expression_type[13]):index(11):parent(12):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(10):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(12):type(multiplicative_expression_type[65]):index(12):parent(13):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(11):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(13):type(additive_expression_type[4]):index(13):parent(14):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(12):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(14):type(shift_expression_type[78]):index(14):parent(15):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(13):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(15):type(relational_expression_type[74]):index(15):parent(16):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(14):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(16):type(equality_expression_type[35]):index(16):parent(17):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(15):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(17):type(and_expression_type[6]):index(17):parent(18):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(16):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(18):type(exclusive_or_expression_type[36]):index(18):parent(19):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(17):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(19):type(inclusive_or_expression_type[52]):index(19):parent(20):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(18):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(20):type(logical_and_expression_type[61]):index(20):parent(21):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(19):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(21):type(logical_or_expression_type[62]):index(21):parent(22):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(20):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(22):type(conditional_expression_type[15]):index(22):parent(23):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(21):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(23):type(assignment_expression_type[8]):index(23):parent(24):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(22):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(24):type(initializer_type[56]):index(24):parent(25):left_brother(5):right_brother(-1):brother_num(2):brother_seq(1):first_child(23):child_num(1):inrule_num(2):symbol_index([2]):infor_index(-1):line_num(1):compound_id(0):
+
+id(25):type(init_declarator_type[54]):index(25):parent(26):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(5):child_num(2):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(26):type(init_declarator_list_type[53]):index(26):parent(27):left_brother(1):right_brother(-1):brother_num(2):brother_seq(1):first_child(25):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+id(27):type(declaration_type[22]):index(27):parent(28):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(1):child_num(2):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(28):type(external_declaration_type[39]):index(28):parent(29):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(27):child_num(1):inrule_num(1):symbol_index([1]):infor_index(-1):line_num(1):compound_id(0):
+
+id(29):type(translation_unit_type[91]):index(29):parent(-1):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(28):child_num(1):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
+
+----------print_node_table!
++translation_unit_type node_id:29 child_number:1 inrule_num:0 line_num:1
+ +external_declaration_type node_id:28 child_number:1 inrule_num:1 line_num:1
+  +declaration_type node_id:27 child_number:2 inrule_num:1 line_num:1
+   +declaration_specifiers_type node_id:1 child_number:1 inrule_num:3 line_num:1
+    +type_specifier_type node_id:0 child_number:0 inrule_num:1 line_num:1
+   +init_declarator_list_type node_id:26 child_number:1 inrule_num:0 line_num:1
+    +init_declarator_type node_id:25 child_number:2 inrule_num:0 line_num:1
+     +declarator_type node_id:5 child_number:2 inrule_num:0 line_num:1
+      +pointer_type node_id:3 child_number:0 inrule_num:3 line_num:1
+      +direct_declarator_type node_id:4 child_number:1 inrule_num:0 line_num:1
+       +not_know_type node_id:2 child_number:0 inrule_num:-1 line_num:1
+ p
+     +initializer_type node_id:24 child_number:1 inrule_num:2 line_num:1
+      +assignment_expression_type node_id:23 child_number:1 inrule_num:0 line_num:1
+       +conditional_expression_type node_id:22 child_number:1 inrule_num:0 line_num:1
+        +logical_or_expression_type node_id:21 child_number:1 inrule_num:0 line_num:1
+         +logical_and_expression_type node_id:20 child_number:1 inrule_num:0 line_num:1
+          +inclusive_or_expression_type node_id:19 child_number:1 inrule_num:0 line_num:1
+           +exclusive_or_expression_type node_id:18 child_number:1 inrule_num:0 line_num:1
+            +and_expression_type node_id:17 child_number:1 inrule_num:0 line_num:1
+             +equality_expression_type node_id:16 child_number:1 inrule_num:0 line_num:1
+              +relational_expression_type node_id:15 child_number:1 inrule_num:0 line_num:1
+               +shift_expression_type node_id:14 child_number:1 inrule_num:0 line_num:1
+                +additive_expression_type node_id:13 child_number:1 inrule_num:0 line_num:1
+                 +multiplicative_expression_type node_id:12 child_number:1 inrule_num:0 line_num:1
+                  +cast_expression_type node_id:11 child_number:1 inrule_num:0 line_num:1
+                   +unary_expression_type node_id:10 child_number:1 inrule_num:0 line_num:1
+                    +postfix_expression_type node_id:9 child_number:1 inrule_num:0 line_num:1
+                     +primary_expression_type node_id:8 child_number:1 inrule_num:2 line_num:1
+                      +string_type node_id:7 child_number:1 inrule_num:0 line_num:1
+                       +STRING_LITERAL_type node_id:6 child_number:0 inrule_num:-1 line_num:1
+---------------------symbol_table:
+id(0):name(p):name_len(1):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(2):
+id(1):name("hello"):name_len(7):type(STRING_LITERAL_type[75]):file((null)):file_len(0):line_num:(1):in_which_node(6):
+---------------------symbol_table!
+stack: 0 
