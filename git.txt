@@ -1,0 +1,106 @@
+git add filename.txt
+git commit -m "this is notes"
+git push
+
+1.如果代码只在本地有，建立新的代码仓库：
+  a. git init
+  b. git add [file name] 
+  c. git commit -m "here is notes"
+
+2.从已经存在的仓库克隆
+  a. git clone [url.git] [new dir selected]
+  
+3.察看当前状态
+  a. git status
+
+4. git add [file name]
+  a. 跟踪新文件
+  b. 把已经跟踪的文件放到暂存区
+
+5. git commit 之前 先git status察看状态，然后git add添加没有staged的文件
+   git commit -a :git add git commit 也就是commit不需要add
+
+6.  当前目录下.gitignore文件记录忽略的文件。
+  *.[oa] :忽略后缀为.a .o的文件
+  *~     :忽略后缀为~的文件 
+  !lib.a :lib.a除外
+  /TODO  :忽略根目录下的TODO文件，其他目录下的TODO文件不适用此规则
+  build/ :忽略build目录下的所有文件
+
+7. git diff :工作目录 与 暂存区域 差别
+   git diff --staged:暂存区域 与 上次提交 差别
+
+8. git rm :将文件移除版本控制
+   git rm -f :将文件移除版本控制(由于文件已经在暂存区域，需要加-f)
+   git rm --cached:将文件移除版本控制，但是工作目录中还有
+
+9. 文件改名: git mv file_from file_to 
+   等同于:
+   mv file_from file_to
+   git -rm file_from
+   git add file_to
+
+10. git log 察看日志
+
+11. git log -p :每次提交的内容差异 
+    git log -p -2:仅显示最近的两次更新
+    git log --stat
+    git --pretty=[oneline|short|full|fuller]
+    git log --pretty=format:"%h - %an, %ar : %s"
+    %H :hash
+    %h :简短hash
+    %T :树对象完整hash
+    %t :树对象简短hash
+    %P :父对象完整hash
+    %p :父对象简短hash
+    %an :author
+    %ae :author's email
+    %ad :author's edit date
+    %ar :author's edit 多久以前
+    %cn :commit user name
+    %ce :commit user email
+    %cd :commit date
+    %cr :commit date 多久以前
+    %s  :提交说明 
+    git log --pretty=format:"%h %s" --graph
+
+12. git commit --amend :修正最近一次提交
+ 
+13. git reset HEAD file_name : 取消暂存
+
+14. git checkout -- file_name : 撤销文件修改
+
+15. git remote -v :察看远程库  -v means verbose
+
+16. git remote add [short name] [url] :添加远程库
+
+17. git fetch pb :抓取pb内容
+
+18. git push [remote name] [branch name]
+    git push origin master :本地master推送到origin
+    git remote show [remote name]
+    git remote rename old_name new_name
+
+19. .git/config 中
+    [core] 下添加 editor=vim
+
+20. git branch branch_name :创建新的分支
+    git checkout branch_name :切换分支
+    git checkout -b name :切换版本 相当于 git branch name  and git checkout name
+
+21. git checkout master 
+    git merge name
+    切换当master分支，然后与name分支合并
+
+22. git branch -d name :删除分支
+
+
+
+
+
+
+
+
+
+
+

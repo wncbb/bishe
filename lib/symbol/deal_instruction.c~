@@ -27,7 +27,7 @@ int print_instruction_infor(int index)
     {
         node_ptr=my_state.node_table[ptr->node_index];
         printf("index:%d sequence:%d node_index:%d prev:%d next:%d ins_type:%d ins_set_num:%d\n", ptr->index, ptr->sequence, ptr->node_index, ptr->prev, ptr->next, ptr->ins_type, ptr->ins_set_num);
-        printf("line_num:%d inst_type:%d ins_taint:%d ins_ret:%d ins_data1:%d ins_data2:%d ins_data3:%d\n", node_ptr->node_line_num, ptr->ins_type, ptr->ins_taint, ptr->ins_ret, ptr->ins_data1, ptr->ins_data2, ptr->ins_data3);
+        printf("line_num:%d inst_type:%d ins_ret:%d ins_data1:%d ins_data2:%d ins_data3:%d\n", node_ptr->node_line_num, ptr->ins_type, ptr->ins_ret, ptr->ins_data1, ptr->ins_data2, ptr->ins_data3);
         if(ptr->ins_type-11>=0)
         {
             printf("instruction description: %s(%d)\n", instruction_type_str[ptr->ins_type-11], ptr->ins_type);
@@ -169,7 +169,7 @@ int add_instruction(int in_type, int in_data1, int in_data2, int in_data3, int i
     infor_ptr->ins_data2=ins_data2;
     infor_ptr->ins_data3=ins_data3;
     infor_ptr->ins_ret  =ins_ret;
-    infor_ptr->ins_taint=0;
+    infor_ptr->ret_taint=0;
     infor_ptr->ins_set_o.num=0;
     infor_ptr->ins_set_o.head=NULL;
     infor_ptr->ins_set_o.tail=NULL;
@@ -2196,7 +2196,7 @@ int check_ins_data_taint(int ins_index)
   switch(ins_type)
   {
     case assignment_ins:  //  11  =
-      taint_spread(ins_data2, ins_ret);
+
       break;
     case mul1_assignment_ins: // 12 *=
       taint_spread(ins_data1, ins_ret);
@@ -2292,14 +2292,7 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case add1_op_ins: //49 +
-      if(smbl_a_data1_ptr->taint_m > smbl_a_data2_ptr->taint_m)
-      {
-        taint_spread(ins_data1, ins_ret);
-      }
-      else
-      {
-        taint_spread(ins_data2, ins_ret);
-      }
+
 
       break;
     case add2_op_ins: //50 -
@@ -2367,6 +2360,7 @@ int check_ins_data_taint(int ins_index)
   }
   return 0;
 }
+
 
 
 

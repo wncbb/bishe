@@ -144,6 +144,7 @@ int symbol_a_add(int action_scope, int node_index)
     infor_ptr->array_dimension=0;
     infor_ptr->every_dimension=NULL;
     infor_ptr->taint_m=0;
+    infor_ptr->taint_src=infor_ptr->index;
     infor_ptr->action_scope=action_scope;
 /*
     if(my_state.need_taint_file==1)
@@ -364,7 +365,7 @@ int print_symbol_a_infor(int index)
         printf("index:%d declaration_specifiers_index:%d IDENTIFIER_index:%d symbol_name:***%s(line_num:%d)*** action_scope:%d s_type(variable:0 struct:1 function:2):%d \
         \npointer_index:%d array_dimension:%d \n", infor_ptr->index, infor_ptr->declaration_specifiers_index, \
         infor_ptr->IDENTIFIER_index, infor_ptr->smbl_name, infor_ptr->line_num, infor_ptr->action_scope, infor_ptr->s_type, infor_ptr->pointer_index, infor_ptr->array_dimension);
-        printf("taint_m:%d\n", infor_ptr->taint_m);
+        printf("taint_m:%d taint_src:%d\n", infor_ptr->taint_m, infor_ptr->taint_src);
         int i=0;
         struct symbol_a_dms * dms_ptr=infor_ptr->next;
         for(i=0; i<infor_ptr->mod_num; ++i)

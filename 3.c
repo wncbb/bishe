@@ -1,21 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
+
 int main()
 {
   int a=12;
   int b=13;
-  if(b<14)
+  int bb=13;
+  int c;
+  c=a+b+bb;
+
+  if(c>15)
   {
-      int c=a;
-      
-      int a=a+1;
-      printf("a=%d c=%d\n", a, c);
+          c++;
   }
-  printf("a=%d\n", a);
-  return 0;
+  else
+  {
+          c=c-1;
+  }
+
+
 }
-
-
 
 
 

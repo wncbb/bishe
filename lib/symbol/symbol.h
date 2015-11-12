@@ -64,6 +64,7 @@ struct symbol_a_infor{
     struct symbol_a_dms * next;
     int mod_num;
     int taint_m;
+    int taint_src;
     int action_scope;
 };
 

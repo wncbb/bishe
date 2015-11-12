@@ -30,9 +30,10 @@ struct instruction_infor{
     int ins_data1;
     int ins_data2;
     int ins_data3;
+    int ins_ret;
+    int ins_taint;
     int ins_set_num;
     struct ins_set  ins_set_o;
-    int ins_ret;
 };
 
 
@@ -95,7 +96,8 @@ int deal_compound_statement_infor(int index);
 int deal_selection_statement_infor(int index);
 
 
-
+int taint_spread(int from_id, int to_id);
+int check_ins_data_taint(int ins_index);
 
 
 
