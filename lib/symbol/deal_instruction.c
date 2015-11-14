@@ -27,7 +27,7 @@ int print_instruction_infor(int index)
     {
         node_ptr=my_state.node_table[ptr->node_index];
         printf("index:%d sequence:%d node_index:%d prev:%d next:%d ins_type:%d ins_set_num:%d\n", ptr->index, ptr->sequence, ptr->node_index, ptr->prev, ptr->next, ptr->ins_type, ptr->ins_set_num);
-        printf("line_num:%d inst_type:%d ins_taint:%d ins_ret:%d ins_data1:%d ins_data2:%d ins_data3:%d\n", node_ptr->node_line_num, ptr->ins_type, ptr->ins_taint, ptr->ins_ret, ptr->ins_data1, ptr->ins_data2, ptr->ins_data3);
+        printf("line_num:%d inst_type:%d ins_ret:%d ins_data1:%d ins_data2:%d ins_data3:%d ins_taint_level:%d ins_taint_src:%d\n", node_ptr->node_line_num, ptr->ins_type,  ptr->ins_ret, ptr->ins_data1, ptr->ins_data2, ptr->ins_data3, ptr->ins_taint_level, ptr->ins_taint_src);
         if(ptr->ins_type-11>=0)
         {
             printf("instruction description: %s(%d)\n", instruction_type_str[ptr->ins_type-11], ptr->ins_type);
@@ -169,15 +169,13 @@ int add_instruction(int in_type, int in_data1, int in_data2, int in_data3, int i
     infor_ptr->ins_data2=ins_data2;
     infor_ptr->ins_data3=ins_data3;
     infor_ptr->ins_ret  =ins_ret;
-    infor_ptr->ins_taint=0;
+    infor_ptr->ins_taint_level=0;
+    infor_ptr->ins_taint_src=-1;
     infor_ptr->ins_set_o.num=0;
     infor_ptr->ins_set_o.head=NULL;
     infor_ptr->ins_set_o.tail=NULL;
 
-    if(my_state.need_taint_file!=0)
-    {
-      check_ins_data_taint(index);
-    }
+    check_ins_data_taint(index);
 
     return index;
 }
@@ -831,6 +829,7 @@ int deal_inclusive_or_expression_infor(int index)
 
 int deal_exclusive_or_expression_infor(int index)
 {
+    printf("1114todd3\n");
     struct exclusive_or_expression_infor * infor_ptr=my_state.exclusive_or_expression_table[index];
     int category   =infor_ptr->category;
     int node_index =infor_ptr->node_index;
@@ -880,7 +879,7 @@ int deal_exclusive_or_expression_infor(int index)
         default:
             break;
     }
-
+    printf("1114todd2\n");
     return ret;
 }
 
@@ -1579,17 +1578,13 @@ int deal_expression_infor(int index)
     }
     int end_ins_index=cur_index_instruction()-1;
     ins_data2=  end_ins_index;
-
+    ins_ret=ret_instruction(ins_data2);
     alter_instruction_ins_data2(cur_ins_index, ins_data2);
-
-
-
-
-
+    alter_instruction_ins_ret(cur_ins_index, ins_ret);
+    printf("alice2: %d\n", ins_ret);
     printf("0521c: start_ins_index:end_ins_index  %d:%d\n", start_ins_index, end_ins_index);
 
-
-
+    check_ins_data_taint(ret);
     return ret;
 }
 
@@ -2061,6 +2056,7 @@ selection_statement:
 */
 int deal_selection_statement_infor(int index)
 {
+    //return 0;
     struct selection_statement_infor *infor_ptr=my_state.selection_statement_table[index];
     int category   =infor_ptr->category;
     int data1_index=infor_ptr->data1_index;
@@ -2078,7 +2074,6 @@ int deal_selection_statement_infor(int index)
     int cur_ins_index=-1;
 
     int ret=-1;
-
     switch(category)
     {
         case 0:
@@ -2135,6 +2130,7 @@ int deal_selection_statement_infor(int index)
     }
 
 
+    check_ins_data_taint(ret);
     return ret;
 }
 
@@ -2147,20 +2143,98 @@ int deal_selection_statement_infor(int index)
 
 
 
-int taint_spread(int from_id, int to_id)
+int taint_spread_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
 {
   struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
   struct symbol_a_infor *   to_ptr=my_state.symbol_a_table[to_id];
   to_ptr->taint_m=from_ptr->taint_m;
   to_ptr->taint_src=from_ptr->taint_src;
+  ins_ptr->ins_taint_level=from_ptr->taint_m;
+  ins_ptr->ins_taint_src=from_ptr->taint_src;
 
   return 0;
 }
+int taint_spread_ins(int from_id, int to_id)
+{
+  return 0; 
+}
 
+//int deal_declaration_infor(data1_index);
+
+int taint_retsmbla_2_insself(int ins_ret, struct instruction_infor * ins_ptr)
+{
+  struct symbol_a_infor * smbl_a_ret_ptr=NULL;
+  if(ins_ret>=0)
+  {
+    printf("1114todd15\n");
+    smbl_a_ret_ptr=my_state.symbol_a_table[ins_ret];
+    ins_ptr->ins_taint_level=smbl_a_ret_ptr->taint_m;
+    ins_ptr->ins_taint_src  =smbl_a_ret_ptr->taint_src;
+  }
+  return 0;
+}
+
+int taint_1ins_2_insself(int ins_data1, struct instruction_infor * ins_ptr)
+{
+  struct instruction_infor * ins_taint_ptr=NULL;
+  if(ins_data1>=0)
+  {
+    ins_taint_ptr=my_state.instruction_table[ins_data1];
+    ins_ptr->ins_taint_level=ins_taint_ptr->ins_taint_level;
+    ins_ptr->ins_taint_src  =ins_taint_ptr->ins_taint_src;
+  }
+  return 0;
+  
+}
+
+int taint_2smbla(int ins_data1, int ins_data2, int ins_ret, struct instruction_infor * ins_ptr)
+{
+  struct symbol_a_infor *smbl_a_data1_ptr=NULL;
+  struct symbol_a_infor *smbl_a_data2_ptr=NULL;
+  if(ins_data1>=0)
+  {
+    smbl_a_data1_ptr=my_state.symbol_a_table[ins_data1];
+  }
+
+  if(ins_data2>=0)
+  {
+    smbl_a_data2_ptr=my_state.symbol_a_table[ins_data2];
+  }
+  if(smbl_a_data1_ptr!=NULL && smbl_a_data2_ptr!=NULL)
+  {
+    if(smbl_a_data1_ptr->taint_m > smbl_a_data2_ptr->taint_m)
+    {
+      taint_spread_smbla(ins_data1, ins_ret, ins_ptr);
+    }
+    else
+    {
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+    }
+  }
+  if(smbl_a_data1_ptr==NULL && smbl_a_data2_ptr!=NULL)
+  {
+    taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+  }
+  if(smbl_a_data1_ptr!=NULL && smbl_a_data2_ptr==NULL)
+  {
+    taint_spread_smbla(ins_data1, ins_ret, ins_ptr);
+  }
+
+}
+
+/*
+ *该函数只放在add_instruction函数中是不足的，因为有的指令是先添加，就是先调用add_instruction，然后再对数据进行完善，如deal_expression_infor
+ *因此必须在这类函数的最后再次调用check_ins_data_taint，正确的进行污点标记
+ *
+ * */
 
 
 int check_ins_data_taint(int ins_index)
 {
+  if(my_state.need_taint_file==0)
+  {
+    return 0;
+  }
   struct instruction_infor *ins_ptr=my_state.instruction_table[ins_index];
   int ins_data1=ins_ptr->ins_data1;
   int ins_data2=ins_ptr->ins_data2;
@@ -2193,40 +2267,43 @@ int check_ins_data_taint(int ins_index)
 
   int ins_type=ins_ptr->ins_type;
   int tmp_taint_level=0;
+
+  printf("1114todd ins_type: %d\n", ins_type);
+
   switch(ins_type)
   {
     case assignment_ins:  //  11  =
-      taint_spread(ins_data2, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul1_assignment_ins: // 12 *=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul2_assignment_ins: // 13 /=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul3_assignment_ins: // 14 %=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case add1_assignment_ins: // 15 +=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case add2_assignment_ins: // 16 -=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case shift1_assignment_ins: //17 <<=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case shift2_assignment_ins: //18 >>=
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case and_assignment_ins:          //19 &
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case exclusive_or_assignment_ins: //20 ^
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case inclusive_or_assignment_ins: //21 |
-      taint_spread(ins_data1, ins_ret);
+      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     //unary_expression
     case inc_op_unary_ins: //22 ++data
@@ -2280,6 +2357,7 @@ int check_ins_data_taint(int ins_index)
     case l_op_ins: //43 <
       break;
     case g_op_ins: //44 >
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case le_op_ins: //45 <=
       break;
@@ -2292,17 +2370,10 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case add1_op_ins: //49 +
-      if(smbl_a_data1_ptr->taint_m > smbl_a_data2_ptr->taint_m)
-      {
-        taint_spread(ins_data1, ins_ret);
-      }
-      else
-      {
-        taint_spread(ins_data2, ins_ret);
-      }
-
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case add2_op_ins: //50 -
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case mul1_op_ins: //51 *
@@ -2316,16 +2387,19 @@ int check_ins_data_taint(int ins_index)
       break;
       
     case just_IDENTIFIER_ins: //55 just IDENTIFI]ER
-      taint_spread(ins_data1, ins_ret); 
+      taint_spread_smbla(ins_data1, ins_ret, ins_ptr); 
       break;
 
     case expression_ins: //56 expresssion(not expression_statement)
+      printf("alice1: %d\n", ins_ret);
+      taint_retsmbla_2_insself(ins_ret, ins_ptr);
       break;
 
     case compound_statement_ins: //57 compound_statement
       break;
 
     case selection_statement_0_ins: //58 IF(expression) statement ELSE statement
+      taint_1ins_2_insself(ins_data1, ins_ptr);
       break;
     case selection_statement_1_ins: //59 IF(expression) statement
       break;

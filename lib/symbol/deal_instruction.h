@@ -31,7 +31,8 @@ struct instruction_infor{
     int ins_data2;
     int ins_data3;
     int ins_ret;
-    int ins_taint;
+    int ins_taint_level;
+    int ins_taint_src;
     int ins_set_num;
     struct ins_set  ins_set_o;
 };
@@ -95,13 +96,14 @@ int deal_expression_infor(int index);
 int deal_compound_statement_infor(int index);
 int deal_selection_statement_infor(int index);
 
-
-int taint_spread(int from_id, int to_id);
+int taint_spread_ins(int from_id, int to_id);
+int taint_spread_smbla(int from_id, int to_id, struct instruction_infor * ins_ptr);
 int check_ins_data_taint(int ins_index);
 
+int taint_2smbla(int ins_data1, int ins_data2, int ins_ret, struct instruction_infor * ins_ptr);
 
+int taint_retsmbla_2_insself(int ins_ret, struct instruction_infor * ins_ptr);
 
-
-
+int taint_1ins_2_insself(int ins_data1, struct instruction_infor * ins_ptr);
 
 
