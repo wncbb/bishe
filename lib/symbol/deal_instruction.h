@@ -97,6 +97,7 @@ int deal_compound_statement_infor(int index);
 int deal_selection_statement_infor(int index);
 
 int taint_spread_ins(int from_id, int to_id);
+int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor * ins_ptr);
 int taint_spread_smbla(int from_id, int to_id, struct instruction_infor * ins_ptr);
 int check_ins_data_taint(int ins_index);
 

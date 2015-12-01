@@ -1,27 +1,12 @@
-
 int main()
 {
   int a=12;
   int b=13;
-  int c;
-
-  c+=a-b+c;
-  if(c>15)
+  if(b<15)
   {
-    ++a;
-  }
-  else
-  {
-    if(b<12)
-    {
-      b++;
-    }
-    else
-    {
-      b--;
-    }
+    int c;
+    int d;
+    d=a*12;
+    c=a+11;
   }
 }
-
-
-

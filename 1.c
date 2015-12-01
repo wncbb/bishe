@@ -1,4 +1,8 @@
-//testasdf 2
+/nt a=12;
+  int b=13;
+  int bb=13;
+  int c;
+  /testasdf 2
 int main()
 {
 
@@ -20,5 +24,18 @@ int main()
     a=(int) c;
 }
 
+nt a=12;
+nht a=12;
+  int b=13;
+  int bb=13;
+  int c;
+  c=a+b+bb;
 
+  if(c>15)
+  {
+   c=a+b+bb;
+
+  if(c>15)
+  {
+  
 

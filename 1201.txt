@@ -1,0 +1,157 @@
+一元操作符(unary_expression)：
+	++
+	--
+
+	&
+	*
+	+
+	-
+	~
+	!
+
+	sizeof
+
+	alignof
+
+
+
+二元操作符：
+multiplicative:
+	*
+	/
+	%
+additive:
+	+
+	-
+shift:
+ 	<<
+	>>
+relational:
+	<
+	>
+	>=
+	<=
+euality:
+	==
+	!=
+	
+	&
+	^
+	|
+	&&
+	||
+	
+	
+
+
+
+
+
+三元操作符：
+	?:
+
+
+
+
+
+
+
+
+
+assignment_ins(11):         R=vA    R.taint=A.taint
+mul1_assignment_ins(12):    R*=A   R.taint=max(R.taint, A.taint)
+mul2_assignment_ins(13):    R/=A   R.taint=max(R.taint, A.taint)
+mul3_assignment_ins(14):    R%=A   R.taint=max(R.taint, A.taint)
+add1_assignment_Ins(15):    R+=A   R.taint=max(R.taint, A.taint)
+add2_assignment_Ins(16):    R-=A   R.taint=max(R.taint, A.taint)
+shift1_assignment_Ins(17):    R<<=A   R.taint=max(R.taint, A.taint)
+shift2_assignment_Ins(18):    R>>=A   R.taint=max(R.taint, A.taint)
+
+and_assignmentins(19): R&=A
+exclusive_or_assignment_Ins(20): R=A^B R.taint=max(A.taint, B.taint)
+inclusive_or_assignment_Ins(21): R=A|B R.taint=max(A.taint, B.taint)
+
+inc_op_unary_ins(22): R=++A R.taint=A.taint
+dec_op_unary_ins(23): R=--A R.taint=A.taint
+
+ta_op_unary_ins(24):  R=&A
+rta_op_unary_ins(25): R=*A
+
+positive_unary_ins(26): R=+A R.taint=A.taint
+negative_unary_ins(27): R=-A R.taint=A.taint
+bit_reverse_unary_ins(28): R=~A
+negation_unary_ins(29): R=!A
+
+sizeof_unary_ins(30): R=sizeof(A) 
+sizeof_type_ins(31): R=sizeof(type) 
+alignof_type_ins(32): 
+
+bracket_postfix_ins(33): R=A[B] 
+parentheses_postfix_ins(34): R=A(B)
+
+conditional_exp_ins(35): R=A?B:C
+
+logical_or_exp_ins(36): R=A||B R.taint=max(A.taint, B.taint)
+logical_and_exp_ins(37): R=A&&B R.taint=max(A.taint, B.taint)
+
+inclusive_or_exp_ins(38): R=A|B R.taint=max(A.taint, B.taint)
+exclusive_or_exp_ins(39): R=A^B R.taint=max(A.taint, B.taint)
+and_exp_ins(40): R=A&B R.taint=max(A.taint, B.taint)
+
+eq_op_ins(41): R=(A==B) R.taint=max(A.taint, B.taint)
+ne_op_ins(42): R=(A!=B) R.taint=max(A.taint, B.taint)
+
+l_op_ins(43): R=(A<B) R.taint=max(A.taint, B.taint)
+g_op_ins(44): R=(A>B) R.taint=max(A.taint, B.taint)
+le_op_ins(45): R=(A<=B) R.taint=max(A.taint, B.taint)
+ge_op_ins(46): R=(A>=B) R.taint=max(A.taint, B.taint)
+
+l_shift_op_ins(47): R=(A<<B) R.taint=max(A.taint, B.taint)
+r_shift_op_ins(48): R=(A>>B) R.taint=max(A.taint, B.taint)
+
+add1_op_ins(49): R=A+B R.taint=max(A.taint, B.taint)
+add2_op_ins(50): R=A-B R.taint=max(A.taint, B.taint)
+
+mul1_op_ins(51): R=A*B R.taint=max(A.taint, B.taint)
+mul2_op_ins(52): R=A/B R.taint=max(A.taint, B.taint)
+mul3_op_ins(53): R=A%B R.taint=max(A.taint, B.taint)
+
+type_op_ins(54):
+
+just_IDENTIFIER_ins(55):
+
+expression_ins(56):
+
+compound_statement_ins(57): 
+
+selection_statement_0_ins(58): if(A) B else C
+
+selection_statement_1_ins(59): if(A) B
+
+selection_statement_2_ins(60): switch(A) B
+
+labeled_statement_0_ins(61): IDENTIFIER: 
+labeled_statement_1_ins(62): 
+labeled_statement_2_ins(63): 
+
+jump_statement_0_ins(64):
+jump_statement_1_ins(65):
+jump_statement_2_ins(66):
+jump_statement_3_ins(67):
+jump_statement_4_ins(68):
+
+iteration_statement_0_ins(69):
+iteration_statement_1_ins(70):
+iteration_statement_2_ins(71):
+iteration_statement_3_ins(72):
+iteration_statement_4_ins(73):
+iteration_statement_5_ins(74):
+
+
+
+
+
+
+
+
+

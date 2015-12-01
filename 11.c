@@ -1,8 +1,7 @@
-int a=13;
 
 int main()
 {
-  int a=12;
+  int a;
   switch(a)
   {
     case 1:
@@ -14,6 +13,10 @@ int main()
     default:
       a*=a;
       break;
+  }
+  if(a<12)
+  {
+          int a;
   }
 }
 

@@ -2135,9 +2135,20 @@ int deal_selection_statement_infor(int index)
 }
 
 
-
-
-
+//a*=b
+int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
+{
+  struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
+  struct symbol_a_infor *   to_ptr=my_state.symbol_a_table[to_id];
+  if(from_ptr->taint_m>to_ptr->taint_m)
+  { 
+    to_ptr->taint_m=from_ptr->taint_m;
+    to_ptr->taint_src=from_ptr->taint_src;
+    ins_ptr->ins_taint_level=from_ptr->taint_m;
+    ins_ptr->ins_taint_src=from_ptr->taint_src;
+  }
+  return 0;
+}
 
 
 
@@ -2186,6 +2197,7 @@ int taint_1ins_2_insself(int ins_data1, struct instruction_infor * ins_ptr)
   return 0;
   
 }
+
 
 int taint_2smbla(int ins_data1, int ins_data2, int ins_ret, struct instruction_infor * ins_ptr)
 {
@@ -2276,25 +2288,25 @@ int check_ins_data_taint(int ins_index)
       taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul1_assignment_ins: // 12 *=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul2_assignment_ins: // 13 /=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case mul3_assignment_ins: // 14 %=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case add1_assignment_ins: // 15 +=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case add2_assignment_ins: // 16 -=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case shift1_assignment_ins: //17 <<=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case shift2_assignment_ins: //18 >>=
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     case and_assignment_ins:          //19 &
       taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
@@ -2377,10 +2389,13 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case mul1_op_ins: //51 *
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case mul2_op_ins: //52 /
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case mul3_op_ins: //53 %
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case type_op_ins: //54 (type_name) cast_expression

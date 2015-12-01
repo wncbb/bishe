@@ -1,0 +1,19 @@
+int main()
+  switch(15)
+  }
+  {
+    if(b<12)
+    {
+      b++;
+    }
+    else
+    {
+      b--;
+    }
+  }
+}
+
+
+
+Sun Nov 22 13:24:05 HKT 2015
+hello my friend!
