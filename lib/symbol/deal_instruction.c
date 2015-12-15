@@ -2308,17 +2308,18 @@ int check_ins_data_taint(int ins_index)
     case shift2_assignment_ins: //18 >>=
       taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
-    case and_assignment_ins:          //19 &
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+    case and_assignment_ins:          //19 &=
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
-    case exclusive_or_assignment_ins: //20 ^
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+    case exclusive_or_assignment_ins: //20 ^=
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
-    case inclusive_or_assignment_ins: //21 |
-      taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+    case inclusive_or_assignment_ins: //21 |=
+      taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
       break;
     //unary_expression
     case inc_op_unary_ins: //22 ++data
+      //taint_spread_smbla(ins_data1, ins_ret, ins_ptr);
       break;
     case dec_op_unary_ins: //23 --data
       break;
@@ -2355,10 +2356,13 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case inclusive_or_exp_ins: //38 |
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
-    case exclusive_or_exp_ins: //39 ^
+    case exclusive_or_exp_ins: //39 ^ 
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
-    case and_exp_ins: //40 &
+    case and_exp_ins: //40 &  a&b
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case eq_op_ins: //41 ==
