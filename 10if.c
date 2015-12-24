@@ -4,7 +4,7 @@ void main()
   int b=13;
   int c;
   c=++a;
-  while(c>12)
+  if(c>12)
   {
     printf("a");
   }

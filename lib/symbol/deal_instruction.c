@@ -1722,6 +1722,7 @@ int deal_iteration_statement_infor(int index)
             break;
     }
 
+    check_ins_data_taint(ret);
 
     return ret;
 }
@@ -2134,8 +2135,10 @@ int deal_selection_statement_infor(int index)
     return ret;
 }
 
-
-//a*=b
+/*
+ * cmpare from_id and to_id, which is higher give to to_id
+ * like a*=b (a.taint=max(a.taint, b.taint))
+ */
 int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
 {
   struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
@@ -2153,7 +2156,9 @@ int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor *ins
 
 
 
-
+/*
+ *taint from from_id to to_id, like a=b
+ * */
 int taint_spread_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
 {
   struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
@@ -2171,7 +2176,10 @@ int taint_spread_ins(int from_id, int to_id)
 }
 
 //int deal_declaration_infor(data1_index);
-
+/*
+ *we need the result of expression if is tainted, because like if(expression) we need the taint of expression
+ *
+ */
 int taint_retsmbla_2_insself(int ins_ret, struct instruction_infor * ins_ptr)
 {
   struct symbol_a_infor * smbl_a_ret_ptr=NULL;
@@ -2185,6 +2193,12 @@ int taint_retsmbla_2_insself(int ins_ret, struct instruction_infor * ins_ptr)
   return 0;
 }
 
+
+
+/*
+ *like if(expression) 
+ *if_stmt.taint=expression.taint
+ */
 int taint_1ins_2_insself(int ins_data1, struct instruction_infor * ins_ptr)
 {
   struct instruction_infor * ins_taint_ptr=NULL;
@@ -2193,12 +2207,16 @@ int taint_1ins_2_insself(int ins_data1, struct instruction_infor * ins_ptr)
     ins_taint_ptr=my_state.instruction_table[ins_data1];
     ins_ptr->ins_taint_level=ins_taint_ptr->ins_taint_level;
     ins_ptr->ins_taint_src  =ins_taint_ptr->ins_taint_src;
+    printf("nk1225: ins_data1:%d taint:%d\n", ins_data1, ins_taint_ptr->ins_taint_level);
   }
   return 0;
   
 }
 
-
+/*
+ * ins_ret.taint=max(ins_Data1.taint, ins_data2.taint)
+ * like c=a+b (c.taint=max(a.taint, b.taint))
+ */
 int taint_2smbla(int ins_data1, int ins_data2, int ins_ret, struct instruction_infor * ins_ptr)
 {
   struct symbol_a_infor *smbl_a_data1_ptr=NULL;
@@ -2351,8 +2369,10 @@ int check_ins_data_taint(int ins_index)
       break;
     
     case logical_or_exp_ins: //36 OR_OP  ||
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case logical_and_exp_ins: //37 AND_OP  &&
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case inclusive_or_exp_ins: //38 |
@@ -2366,23 +2386,30 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case eq_op_ins: //41 ==
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case ne_op_ins: //42 !=
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case l_op_ins: //43 <
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case g_op_ins: //44 >
       taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case le_op_ins: //45 <=
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case ge_op_ins: //46 >=
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case l_shift_op_ins: //47 <<
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
     case r_shift_op_ins: //48 >>
+      taint_2smbla(ins_data1, ins_data2, ins_ret, ins_ptr);
       break;
 
     case add1_op_ins: //49 +
@@ -2421,8 +2448,10 @@ int check_ins_data_taint(int ins_index)
       taint_1ins_2_insself(ins_data1, ins_ptr);
       break;
     case selection_statement_1_ins: //59 IF(expression) statement
+      taint_1ins_2_insself(ins_data1, ins_ptr);
       break;
     case selection_statement_2_ins: //60 SWITCH (expression) statement
+      taint_1ins_2_insself(ins_data1, ins_ptr);
       break;
 
     case labeled_statement_0_ins: //61 IDENTIFIER: statement
@@ -2444,6 +2473,7 @@ int check_ins_data_taint(int ins_index)
       break;
 
     case iteration_statement_0_ins: //69 WHILE(expression) statement
+      taint_1ins_2_insself(ins_data1, ins_ptr);
       break;
     case iteration_statement_1_ins: //70 DO statement WHILE(expression)
       break;
