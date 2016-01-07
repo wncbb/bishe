@@ -2141,8 +2141,14 @@ int deal_selection_statement_infor(int index)
  */
 int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
 {
-  struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
   struct symbol_a_infor *   to_ptr=my_state.symbol_a_table[to_id];
+  if(from_id<0)  //like a*=12, 12 has no taint info and no symbol info, so the from_id=-1
+  {
+    to_ptr->taint_m=0;
+    to_ptr->taint_src=-1;
+    return 1;
+  }
+  struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
   if(from_ptr->taint_m>to_ptr->taint_m)
   { 
     to_ptr->taint_m=from_ptr->taint_m;
@@ -2161,6 +2167,10 @@ int taint_spread_cmp_smbla(int from_id, int to_id, struct instruction_infor *ins
  * */
 int taint_spread_smbla(int from_id, int to_id, struct instruction_infor *ins_ptr)
 {
+  if(from_id<0 || to_id<0)
+  {
+    return 1;
+  }
   struct symbol_a_infor * from_ptr=my_state.symbol_a_table[from_id];
   struct symbol_a_infor *   to_ptr=my_state.symbol_a_table[to_id];
   to_ptr->taint_m=from_ptr->taint_m;
@@ -2303,7 +2313,10 @@ int check_ins_data_taint(int ins_index)
   switch(ins_type)
   {
     case assignment_ins:  //  11  =
+      //printf("here943 start %d %d %x\n", ins_data2, ins_ret, ins_ptr);
+      //if(ins_data2>=0) //like i=12, data2 is -1, no need to taint
       taint_spread_smbla(ins_data2, ins_ret, ins_ptr);
+      //printf("here943 end\n");
       break;
     case mul1_assignment_ins: // 12 *=
       taint_spread_cmp_smbla(ins_data2, ins_ret, ins_ptr);
@@ -2478,8 +2491,12 @@ int check_ins_data_taint(int ins_index)
     case iteration_statement_1_ins: //70 DO statement WHILE(expression)
       break;
     case iteration_statement_2_ins: //71 FOR(expression_statement expression_statement) statement
+      //for(i=0; i<c;)
+      taint_1ins_2_insself(ins_data2, ins_ptr);
       break;
     case iteration_statement_3_ins: //72 FOR(expression_statement expression_statement expression) statement
+      //for(i=0; i<c; ++i)
+      taint_1ins_2_insself(ins_data2, ins_ptr);
       break;
     case iteration_statement_4_ins: //73 FOR(declaration expression_statement) statement
       break;

@@ -2,6 +2,41 @@
 #ifndef SMBL_FUNCTION_DEFINITION_H
 #define SMBL_FUNCTION_DEFINITION_H
 
+
+
+
+/*
+ * parameter_list:
+ *                0. parameter_list , ELLIPSIS
+ *                1. parameter_list
+ */
+struct parameter_list_infor{
+  int index;
+  int node_index;
+  int category;
+  int child_num;
+  int first_child;
+};
+
+
+/*
+ * paramter_declaration:
+ *                      0.declaration_specifiers declarator
+ *                      1.declaration_specifiers abstract_declarator
+ *                      2.declaration_spscifiers
+ */
+struct parameter_declaration_infor{
+  int index;
+  int node_index;
+  int category;
+  int data1_index; 
+  int data2_index; 
+  int next_sibling;
+};
+
+
+
+
 /*
 struct_or_union_specifier:
                           0. struct_or_union { struct_declaration_list }
@@ -690,10 +725,18 @@ int print_IDENTIFIER_table();
 int add_function_definition_table_num();
 int add_function_definition_infor(int node_index, int category, int data1_index, int data2_index, int data3_index, int data4_index);
 
+//2016
+int deal_parameter_type_list(int node_index);
+int deal_parameter_list(int node_index);
+int deal_parameter_declaration(int node_index);
 
+int add_parameter_list_table_num();
+int make_parameter_list_infor(int node_index);
 
-
-
+int print_paramter_declaration_infor();
+int print_paramter_declaration_table();
+int add_parameter_declaration_table_num();
+int make_parameter_declaration_infor(int node_index);
 
 
 

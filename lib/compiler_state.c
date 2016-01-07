@@ -484,6 +484,43 @@ int initialize_compiler_state(int node_max_num, int symbol_max_num)
     memset(my_state.shift_expression_table, 0x00, SHIFT_EXPRESSION_TABLE_NUM*sizeof(struct shift_expression_infor  *));
     my_state.shift_expression_table_num=0;
 
+//2016
+//--------------------initialize parameter_list_table
+    my_state.parameter_list_table=(struct parameter_list_infor **)malloc(PARAMETER_LIST_TABLE_NUM*sizeof(struct parameter_list_infor *));
+    //printf("alibaba my_state.declarator_table:%x\n", my_state.declarator_table);
+    if(0x00==my_state.parameter_list_table)
+    {
+        snprintf(my_state.error_str, sizeof(my_state.error_str), "lib/compiler_state.c: malloc initializer parameter_list_table  error!");
+        my_state.error_int=10125;
+        error_quit();
+    }
+    memset(my_state.parameter_list_table, 0x00, PARAMETER_LIST_TABLE_NUM*sizeof(struct parameter_list_infor  *));
+    my_state.parameter_list_table_num=0;
+
+//--------------------initialize parameter_declaration_table
+    my_state.parameter_declaration_table=(struct parameter_declaration_infor **)malloc(PARAMETER_DECLARATION_TABLE_NUM*sizeof(struct parameter_declaration_infor *));
+    //printf("alibaba my_state.declarator_table:%x\n", my_state.declarator_table);
+    if(0x00==my_state.parameter_declaration_table)
+    {
+        snprintf(my_state.error_str, sizeof(my_state.error_str), "lib/compiler_state.c: malloc initializer parameter_declaration_table  error!");
+        my_state.error_int=10125;
+        error_quit();
+    }
+    memset(my_state.parameter_declaration_table, 0x00, PARAMETER_DECLARATION_TABLE_NUM*sizeof(struct parameter_declaration_infor  *));
+    my_state.parameter_declaration_table_num=0;
+
+
+
+
+
+
+
+
+
+
+
+
+
 //--------------------initialize additive_expression_table
     my_state.additive_expression_table=(struct additive_expression_infor **)malloc(ADDICTIVE_EXPRESSION_TABLE_NUM*sizeof(struct additive_expression_infor *));
     //printf("alibaba my_state.declarator_table:%x\n", my_state.declarator_table);

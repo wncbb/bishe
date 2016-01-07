@@ -1,11 +1,15 @@
-void main(int a1, int a2, int a3)
+void main()
 {
   int a=12;
   int b=13;
   int c;
   c=++a;
-  while(c>12)
+  if(c>12)
   {
     printf("a");
+  }
+  else
+  {
+    printf("what the fuck");
   }
 }

@@ -60,6 +60,9 @@
 #define SYMBOL_A_TABLE_NUM 1024
 #define INSTRUCTION_TABLE_NUM 4096
 
+#define PARAMETER_LIST_TABLE_NUM 1024 
+#define PARAMETER_DECLARATION_TABLE_NUM 1024
+
 #define TAINT_MAX_NUM 1024
 #define MID_MAX_BUF 1024
 
@@ -241,6 +244,17 @@ struct compiler_state
 
 
 //-----------------------------------------20150327 end  --------------------------
+
+//-----------------------------------------20160104 start
+  struct parameter_list_infor ** parameter_list_table;
+  int parameter_list_table_num;
+  
+  struct parameter_declaration_infor ** parameter_declaration_table;
+  int parameter_declaration_table_num;
+
+
+
+//-----------------------------------------20160104 stop
 
 
 

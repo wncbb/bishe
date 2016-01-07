@@ -3290,7 +3290,10 @@ int deal_direct_declarator_one(int node_index)
             break;
         case 11:   //direct_declarator (parameter_type_list)
             ddo_infor->category=11;
-            ddo_infor->index1=0;// parameter_type_list index
+            //ddo_infor->index1=0;// parameter_type_list index
+            //mask
+            int second_child=my_state.node_table[node_ptr->node_first_child]->node_right_brother;
+            ddo_infor->index1=deal_parameter_type_list(second_child);
             break;
         case 12:   //direct_declarator ()
             ddo_infor->category=12;
@@ -3302,6 +3305,166 @@ int deal_direct_declarator_one(int node_index)
     }
     return 0; 
 }
+
+//=====================20160104 start====================
+
+//parameter_type_list:
+//                    parameter_list , ELLIPSIS
+//                    parameter_list
+int deal_parameter_type_list(int node_index)
+{
+  int ret=-1;
+  struct node_my *node_ptr=my_state.node_table[node_index];
+  ret=deal_parameter_list(node_ptr->node_first_child);
+  return ret;
+}
+
+int add_parameter_list_table_num(){
+  if(my_state.parameter_list_table_num>=PARAMETER_LIST_TABLE_NUM)
+  {
+    printf("parameter_list_table_num>=PARAMETER_LIST_TABLE_NUM!!! need more space\n");
+  }
+  my_state.parameter_list_table_num+=1;
+  return my_state.parameter_list_table_num;
+}
+
+int make_parameter_list_infor(int node_index){
+  struct parameter_list_infor * ptr=(struct parameter_list_infor*)malloc(sizeof(struct parameter_list_infor));
+  if(ptr==NULL)
+  {
+    printf("malloc parameter_list_infor wrong! lib/symbol/smbl_function_definition.c\n");
+  }
+  int index=my_state.parameter_list_table_num;
+  my_state.parameter_list_table[index]=ptr;
+  ptr->index=index;
+  ptr->node_index=node_index;
+  ptr->category=-1;
+  ptr->child_num=0;
+  ptr->first_child=-1;
+ 
+  add_parameter_list_table_num(); 
+  return index;
+}
+
+//parameter_list:
+//               parameter_declaration
+//               parameter_list , parameter_declaration
+int deal_parameter_list(int node_index)
+{
+  int ret=-1;
+  int i=0;
+  struct node_my *node_ptr=my_state.node_table[node_index];
+  int child_num=node_ptr->node_child_num;
+  printf("todd0105:node_index:%d child_num:%d\n", node_ptr->node_index, node_ptr->node_child_num);
+  struct node_my *child_nptr=my_state.node_table[node_ptr->node_first_child];
+  int infor_num=make_parameter_list_infor(node_index);
+  struct parameter_list_infor * infor_ptr=my_state.parameter_list_table[infor_num]; 
+  infor_ptr->child_num=child_num;
+  int node_child_index=node_ptr->node_first_child;
+  struct parameter_declaration_infor * pre_pdt_ptr=NULL;
+  struct parameter_declaration_infor * cur_pdt_ptr=NULL;
+  int pdt_index=-1;
+  for(i=0; i<child_num; ++i)
+  {
+    printf("todd0107: node_child_index:%d\n", node_child_index);
+    pdt_index=deal_parameter_declaration(node_child_index);
+    cur_pdt_ptr=my_state.parameter_declaration_table[pdt_index];
+    if(pre_pdt_ptr!=NULL && i!=0)
+    {
+      pre_pdt_ptr->next_sibling=cur_pdt_ptr->index; 
+    }
+    pre_pdt_ptr=cur_pdt_ptr;
+    node_child_index=my_state.node_table[node_child_index]->node_right_brother;
+
+  }
+  return ret;
+}
+
+
+int print_parameter_declaration_infor(int i)
+{
+  struct parameter_declaration_infor * ptr=my_state.parameter_declaration_table[i];
+  printf("index(%d) node_index(%d) category(%d) data1_index(%d) data2_index(%d) next_sibling(%d)\n", ptr->index, ptr->node_index, ptr->category, ptr->data1_index, ptr->data2_index, ptr->next_sibling);
+  return 0;
+}
+
+int print_parameter_declaration_table()
+{
+  int i=0;
+  printf("\n\n============================================\n");
+  printf(    " parameter_declaration_table               =\n");
+  printf(    "============================================\n");
+  for(i=0; i<PARAMETER_DECLARATION_TABLE_NUM && i<my_state.parameter_declaration_table_num; ++i)
+  {
+    print_parameter_declaration_infor(i);
+    printf("--------------------------------------------\n\n");
+  }
+  printf("--------------------------------------------\n\n");
+  
+}
+
+int add_parameter_declaration_table_num()
+{
+  my_state.parameter_declaration_table_num+=1;
+}
+
+int make_parameter_declaration_infor(int node_index)
+{
+  struct node_my * node_ptr=my_state.node_table[node_index];
+  struct parameter_declaration_infor * ptr=(struct parameter_declaration_infor*)malloc(sizeof(struct parameter_declaration_infor));
+  if(ptr==NULL)
+  {
+    printf("malloc parameter_declaration_infor wrong! lib/symbol/smbl_function_definition.c\n");
+  }
+  int index=my_state.parameter_declaration_table_num;
+  my_state.parameter_declaration_table[index]=ptr;
+  ptr->index=index;
+  ptr->node_index=node_index;
+  ptr->category=node_ptr->node_inrule_num;
+  ptr->data1_index=-1;
+  ptr->data2_index=-1;
+  ptr->next_sibling=-1;
+  int node_child1=node_ptr->node_first_child;
+  int node_child2=my_state.node_table[node_child1]->node_right_brother;
+  switch(ptr->category)
+  {
+    case 0:
+      ptr->data1_index=deal_declaration_specifiers(node_child1);
+      ptr->data2_index=deal_declarator(node_child2);
+      break;
+    case 1:
+      ptr->data1_index=deal_declaration_specifiers(node_child1);
+      //ptr->data2_index=deal_abstract_declarator(node_child2);
+      break;
+    case 2:
+      ptr->data1_index=deal_declaration_specifiers(node_child1);
+      ptr->data2_index=-1;
+      break;
+    default:
+      break;
+  }
+  add_parameter_declaration_table_num(); 
+  return index;
+  
+}
+
+//parameter_declaration:
+//                      declaration_specifiers declarator
+//                      declaration_specifiers abstract_declarator
+//                      declaration_specifiers
+int deal_parameter_declaration(int node_index)
+{
+  int ret=-1;
+  ret=make_parameter_declaration_infor(node_index);
+  return ret;
+}
+
+
+//=====================20160104 stop====================
+
+
+
+
 //direct_declarator:
 //                  IDENTIFIER
 //                  (declarator)
@@ -3351,14 +3514,15 @@ int deal_direct_declarator(int node_index)
         printf("haha%d\n", child_ptr->node_type);
     }
 
-    /*
+    
     switch(node_inrule_num)
     {
     case 11:
-
+        printf("2016todd node_inrule_num=1 node_index=%d\n", node_index); 
+        
         break;
     }
-    */
+   
     
     
     return elem_ptr->index;
