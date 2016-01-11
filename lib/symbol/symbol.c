@@ -128,6 +128,7 @@ int symbol_a_table_num_add()
 
 int symbol_a_add(int action_scope, int node_index)
 {
+    printf("todd0111c node_index%d\n", node_index);
     struct symbol_a_infor * infor_ptr=(struct symbol_a_infor *)malloc(sizeof(struct symbol_a_infor));
     int cur_infor_index=my_state.symbol_a_table_num;
     infor_ptr->index=cur_infor_index;
@@ -180,13 +181,20 @@ int symbol_a_find_part1(char *name, int action_scope)
 {
   int ret=-1;
   int i=0;
-  for(i=0; i<my_state.symbol_a_table_num && my_state.symbol_a_table[i]!=0x00; ++i)
+  //printf("todd0112 a\n");
+  for(i=0; i<my_state.symbol_a_table_num && my_state.symbol_a_table[i]!=0x00 ; ++i)
   {
+    if(my_state.symbol_a_table[i]->smbl_name==NULL)
+    {
+      continue;
+    }
+    //printf("todd0112 b %d name:%s my_state.symbol_a_table[%d]->smbl_name:%s\n", i, name, i, my_state.symbol_a_table[i]->smbl_name);
     if((0==strcmp(name, my_state.symbol_a_table[i]->smbl_name))&&(action_scope==my_state.symbol_a_table[i]->action_scope))
     {
       ret=i;
       break;
     }
+    //printf("todd0112 c %d\n", i);
   }
   return ret;
 }
@@ -222,7 +230,9 @@ int symbol_a_find(char *name, int action_scope, int node_index)
   struct node_my *node_my_tmp=my_state.node_table[node_index];
   while(1)
   {
+    //printf("todd0111 a %s %d\n", name, action_scope);
     ret=symbol_a_find_part1(name, action_scope);
+    //printf("todd0111 b\n");
     if(ret!=-1)
     {
       break;
@@ -366,6 +376,7 @@ int print_symbol_a_infor(int index)
         \npointer_index:%d array_dimension:%d \n", infor_ptr->index, infor_ptr->declaration_specifiers_index, \
         infor_ptr->IDENTIFIER_index, infor_ptr->smbl_name, infor_ptr->line_num, infor_ptr->action_scope, infor_ptr->s_type, infor_ptr->pointer_index, infor_ptr->array_dimension);
         printf("taint_m:%d taint_src:%d\n", infor_ptr->taint_m, infor_ptr->taint_src);
+        printf("node_index:%d \n", infor_ptr->node_index);
         int i=0;
         struct symbol_a_dms * dms_ptr=infor_ptr->next;
         for(i=0; i<infor_ptr->mod_num; ++i)
@@ -387,7 +398,7 @@ int is_in_taint_file(char *name, int line_num)
   int ret=0;
   for(i=0; i<my_state.taint_num; ++i)
   {
-    printf("1123: %s %s %d\n", my_state.taint_name_array[i], name, i);
+    //printf("1123: %s %s %d\n", my_state.taint_name_array[i], name, i);
     if((0==strcmp(my_state.taint_name_array[i], name))&&(my_state.taint_line_array[i]==line_num))
     {
       ret=my_state.taint_level_array[i];

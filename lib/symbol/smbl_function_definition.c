@@ -105,14 +105,13 @@ extern struct compiler_state my_state;
 
 //-----------------------------------------------------------------
 //-------------------------------20150328 start--------------------
-//-------------------------------20150328 start--------------------
 int print_function_definition_infor(int index)
 {
     struct function_definition_infor * ptr=my_state.function_definition_table[index];
     if(ptr!=NULL)
     {
-        printf("index:%d node_index:%d category:%d data1_index:%d data2_index:%d data3_index:%d data4_index:%d\n", \
-        ptr->index, ptr->node_index, ptr->category, ptr->data1_index, ptr->data2_index, ptr->data3_index, ptr->data4_index);
+        printf("index:%d node_index:%d category:%d data1_index:%d data2_index:%d data3_index:%d data4_index:%d inst_index:%d\n", \
+        ptr->index, ptr->node_index, ptr->category, ptr->data1_index, ptr->data2_index, ptr->data3_index, ptr->data4_index, ptr->inst_index);
     }
     else
     {
@@ -168,7 +167,7 @@ int print_struct_or_union_specifier_table()
     return 0;
 }
 
-int add_function_definition_infor(int node_index, int category, int data1_index, int data2_index, int data3_index, int data4_index)
+int add_function_definition_infor(int node_index, int category, int data1_index, int data2_index, int data3_index, int data4_index, int inst_index)
 {
     int cur_index=add_function_definition_table_num()-1;
     struct function_definition_infor * infor_ptr=(struct function_definition_infor *)malloc(sizeof(struct function_definition_infor));
@@ -185,6 +184,7 @@ int add_function_definition_infor(int node_index, int category, int data1_index,
     infor_ptr->data2_index=data2_index;
     infor_ptr->data3_index=data3_index;
     infor_ptr->data4_index=data4_index;
+    infor_ptr->inst_index=inst_index;
     return cur_index;
 }
 
@@ -3346,6 +3346,27 @@ int make_parameter_list_infor(int node_index){
   return index;
 }
 
+int print_parameter_list_infor(int i)
+{
+  struct parameter_list_infor * ptr=my_state.parameter_list_table[i];
+  printf("index(%d) node_index(%d) category(%d) child_num(%d) first_child(%d) \n", ptr->index, ptr->node_index, ptr->category, ptr->child_num, ptr->first_child);
+  return 0;
+}
+
+int print_parameter_list_table()
+{
+  int i=0;
+  printf("\n\n============================================\n");
+  printf(    " parameter_list_table               =\n");
+  printf(    "============================================\n");
+  for(i=0; i<PARAMETER_LIST_TABLE_NUM && i<my_state.parameter_list_table_num; ++i)
+  {
+    print_parameter_list_infor(i);
+    printf("--------------------------------------------\n\n");
+  }
+  printf("--------------------------------------------\n\n");
+  
+}
 //parameter_list:
 //               parameter_declaration
 //               parameter_list , parameter_declaration
@@ -3355,7 +3376,7 @@ int deal_parameter_list(int node_index)
   int i=0;
   struct node_my *node_ptr=my_state.node_table[node_index];
   int child_num=node_ptr->node_child_num;
-  printf("todd0105:node_index:%d child_num:%d\n", node_ptr->node_index, node_ptr->node_child_num);
+  printf("todd01055 :node_index:%d child_num:%d\n", node_ptr->node_index, node_ptr->node_child_num);
   struct node_my *child_nptr=my_state.node_table[node_ptr->node_first_child];
   int infor_num=make_parameter_list_infor(node_index);
   struct parameter_list_infor * infor_ptr=my_state.parameter_list_table[infor_num]; 
@@ -3368,6 +3389,11 @@ int deal_parameter_list(int node_index)
   {
     printf("todd0107: node_child_index:%d\n", node_child_index);
     pdt_index=deal_parameter_declaration(node_child_index);
+    if(i==0)
+    {
+      infor_ptr->first_child=pdt_index;
+      printf("todd01081 infor_ptr->first_child:%d\n", infor_ptr->first_child);
+    }
     cur_pdt_ptr=my_state.parameter_declaration_table[pdt_index];
     if(pre_pdt_ptr!=NULL && i!=0)
     {
@@ -3626,23 +3652,58 @@ int smbl_function_definition(int node_index)  //key
 
 //--------------------deal with 1 declarator
     //printf("todd: %s\n", node_type_str[child_1_ptr->node_type]);
+    
     data2_index=deal_declarator(child_1_index); 
-
-
+    deal_declarator_belong2_function(data2_index);
 
 //--------------------deal with 2 declaration_list (maybe NULL)
-
+    //data3_index=deal_declaration_list(child_2_index);
 
 
 //--------------------deal with 3 compound_statement
+    int mid_inst_index=-1;
     data4_index=deal_compound_statement(child_3_index);
-    deal_compound_statement_infor(data4_index);  //for test   key
+    mid_inst_index=deal_compound_statement_infor(data4_index);  //for test   key
+    printf("todd0111e mid_ins_index(%d)\n", mid_inst_index);
 
     
-    cur_index=add_function_definition_infor(node_index, category, data1_index, data2_index, data3_index, data4_index);
-
+    cur_index=add_function_definition_infor(node_index, category, data1_index, data2_index, data3_index, data4_index, mid_inst_index);
+    deal_function_definition_infor(cur_index);
     return cur_index;
 }
+
+int deal_declarator_belong2_function(int declarator_index)
+{
+  struct declarator_infor * infor_ptr=my_state.declarator_table[declarator_index];
+  printf("wncbb0111f: %d\n", infor_ptr->node_index);
+}
+
+int deal_function_definition_infor(int index)
+{
+  int ret=-1;
+  if(index<0)
+  {
+    printf("smbl_function_definition.c deal_function_definition_infor wrong!!!\n");
+    return ret;
+  }
+  struct function_definition_infor * infor_ptr=my_state.function_definition_table[index];
+  if(infor_ptr==NULL)
+  {
+    printf("smbl_function_definition.c deal_function_definition_infor wrong!!!\n");
+    return ret;
+  }
+  printf("todd0111d:\nindex(%d) node_index(%d) category(%d) data1_index(declaration_specifiers%d) data2_index(declarator%d)\n data3_index(declaration_list%d)\
+      data4_index(compound_statement%d)\n", infor_ptr->index, infor_ptr->node_index, infor_ptr->category, infor_ptr->data1_index, infor_ptr->data2_index\
+      , infor_ptr->data3_index, infor_ptr->data4_index);
+
+
+
+
+
+  return ret;
+}
+
+
 
 //declarator:
 //           pointer direct_declarator
@@ -4380,8 +4441,9 @@ int deal_IDENTIFIER(int node_index, int type)
         infor_ptr->symbol_a_index=-1;
         if(0!=type)
         {
-            printf("0513xxx\n");
+            printf("todd0513xxx start %s %d %d\n", smbl_ptr->smbl_name, node_ptr->node_compound_id, node_index);
             infor_ptr->symbol_a_index=symbol_a_find(smbl_ptr->smbl_name, node_ptr->node_compound_id, node_index);
+            printf("todd0513xxx stop\n");
             printf("4161: %d\n", infor_ptr->symbol_a_index);
             //infor_ptr->symbol_a_index=symbol_a_find(smbl_ptr->smbl_name, -1, node_index);
             printf("%s\n", smbl_ptr->smbl_name);

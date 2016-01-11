@@ -532,6 +532,7 @@ struct function_definition_infor{
     int data2_index; //declarator
     int data3_index; //declaration_list
     int data4_index; //compound_statement
+    int inst_index;
 };
 
 
@@ -723,24 +724,26 @@ int print_IDENTIFIER_table();
 
 
 int add_function_definition_table_num();
-int add_function_definition_infor(int node_index, int category, int data1_index, int data2_index, int data3_index, int data4_index);
+int add_function_definition_infor(int node_index, int category, int data1_index, int data2_index, int data3_index, int data4_index, int inst_index);
 
 //2016
 int deal_parameter_type_list(int node_index);
-int deal_parameter_list(int node_index);
-int deal_parameter_declaration(int node_index);
 
+int deal_parameter_list(int node_index);
 int add_parameter_list_table_num();
 int make_parameter_list_infor(int node_index);
+int print_parameter_list_infor(int i);
+int print_parameter_list_table();
 
-int print_paramter_declaration_infor();
+int deal_parameter_declaration(int node_index);
+int print_paramter_declaration_infor(int i);
 int print_paramter_declaration_table();
 int add_parameter_declaration_table_num();
 int make_parameter_declaration_infor(int node_index);
 
+int deal_function_definition_infor(int index);
 
-
-
+int deal_declarator_belong2_function(int declarator_index);
 
 
 

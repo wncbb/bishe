@@ -9,3 +9,7 @@ int main()
     c=a+12;
   }
 }
+int func1(int m)
+{
+  return m*m;
+}

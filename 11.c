@@ -1,22 +1,24 @@
-
-int main()
+void main(int wncbb0111, int a2, int a3)
 {
-  int a;
-  switch(a)
+  int a=12;
+  int b=13;
+  int c;
+  c=++a;
+  while(c>12)
   {
-    case 1:
-      a+=a;
-      break;
-    case 2:
-      a-=a;
-      break;
-    default:
-      a*=a;
-      break;
+    printf("a");
   }
-  if(a<12)
+}
+
+void main(int a1, int a2, int a3)
+{
+  int a=12;
+  int b=13;
+  int c;
+  c=++a;
+  while(c>12)
   {
-          int a;
+    printf("a");
   }
 }
 

@@ -1766,6 +1766,7 @@ int main(int argc, char **argv)
     print_struct_or_union_specifier_table();
 
     print_parameter_declaration_table();
+    print_parameter_list_table();
     print_function_definition_table();
 
 

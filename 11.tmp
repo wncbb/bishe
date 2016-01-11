@@ -1,10 +1,10 @@
 before initialize compiler state
-81818181: node_table:0x7fd1831be010
-81818181: symbol_table:0x7fd18313d010
-lib/compiler_state.c:151 0x1b63250
+81818181: node_table:0x7f5fedcae010
+81818181: symbol_table:0x7f5fedc2d010
+lib/compiler_state.c:151 0x1a5f250
 after  initialize compiler state
 ================compiler_state start===================
-c_file_str:10.c
+c_file_str:11.c
 symbol_max_number:65536
 symbol_number:0
 node_max_number:65536
@@ -15,18 +15,18 @@ start taint_source_information start:  ===================
 stop  taint_source_information strop   ===================
 taint_num:0
 need_infor:0
-symbol_table:0x1b63250
-node_table:0x7fd1831be010
-declaration_secifiers_table:0x1b63250
+symbol_table:0x1a5f250
+node_table:0x7f5fedcae010
+declaration_secifiers_table:0x1a5f250
 ================compiler_state end ====================
 type_specifier: VOID
-!!!wncbbfunc
+!!!main
 291:yylineno:1
 check_identifier end
 declaration_specifiers: type_specifier
 direct_declarator: IDENTIFIER
 type_specifier: INT
-!!!a1
+!!!wncbb0111
 291:yylineno:1
 check_identifier end
 declaration_specifiers: type_specifier
@@ -257,12 +257,12 @@ deal_type_specifier node_inrule_num 3
 haha node_type 28
 haha2 inrule_num:0
 3949
-IDENTIFIER: a1 node_type:49 node_inrule_num:-1 node_parent:7 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
+IDENTIFIER: wncbb0111 node_type:49 node_inrule_num:-1 node_parent:7 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc1ad0
-infor_ptr->node_ptr=0x1bc1ad0
-infor_ptr->smbl_ptr=0x1bc1af0
-infor_ptr->smbl_ptr=0x1bc1af0
+infor_ptr->node_ptr=0x1abdad0
+infor_ptr->node_ptr=0x1abdad0
+infor_ptr->smbl_ptr=0x1abdaf0
+infor_ptr->smbl_ptr=0x1abdaf0
 3089
 haha49
 todd01081 infor_ptr->first_child:0
@@ -273,10 +273,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a2 node_type:49 node_inrule_num:-1 node_parent:14 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc1c00
-infor_ptr->node_ptr=0x1bc1c00
-infor_ptr->smbl_ptr=0x1bc1c20
-infor_ptr->smbl_ptr=0x1bc1c20
+infor_ptr->node_ptr=0x1abdc00
+infor_ptr->node_ptr=0x1abdc00
+infor_ptr->smbl_ptr=0x1abdc20
+infor_ptr->smbl_ptr=0x1abdc20
 3089
 haha49
 todd0107: node_child_index:22
@@ -286,20 +286,20 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a3 node_type:49 node_inrule_num:-1 node_parent:20 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc1d30
-infor_ptr->node_ptr=0x1bc1d30
-infor_ptr->smbl_ptr=0x1bc1d50
-infor_ptr->smbl_ptr=0x1bc1d50
+infor_ptr->node_ptr=0x1abdd30
+infor_ptr->node_ptr=0x1abdd30
+infor_ptr->smbl_ptr=0x1abdd50
+infor_ptr->smbl_ptr=0x1abdd50
 3089
 haha49
 haha2 inrule_num:0
 3949
-IDENTIFIER: wncbbfunc node_type:49 node_inrule_num:-1 node_parent:3 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
+IDENTIFIER: main node_type:49 node_inrule_num:-1 node_parent:3 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc1de0
-infor_ptr->node_ptr=0x1bc1de0
-infor_ptr->smbl_ptr=0x1bc1e00
-infor_ptr->smbl_ptr=0x1bc1e00
+infor_ptr->node_ptr=0x1abdde0
+infor_ptr->node_ptr=0x1abdde0
+infor_ptr->smbl_ptr=0x1abde00
+infor_ptr->smbl_ptr=0x1abde00
 3089
 haha49
 2016todd node_inrule_num=1 node_index=24
@@ -316,10 +316,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:29 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc1f90
-infor_ptr->node_ptr=0x1bc1f90
-infor_ptr->smbl_ptr=0x1bc1fb0
-infor_ptr->smbl_ptr=0x1bc1fb0
+infor_ptr->node_ptr=0x1abdf90
+infor_ptr->node_ptr=0x1abdf90
+infor_ptr->smbl_ptr=0x1abdfb0
+infor_ptr->smbl_ptr=0x1abdfb0
 3089
 haha49
 node_index:49
@@ -338,10 +338,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: b node_type:49 node_inrule_num:-1 node_parent:58 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc2190
-infor_ptr->node_ptr=0x1bc2190
-infor_ptr->smbl_ptr=0x1bc21b0
-infor_ptr->smbl_ptr=0x1bc21b0
+infor_ptr->node_ptr=0x1abe190
+infor_ptr->node_ptr=0x1abe190
+infor_ptr->smbl_ptr=0x1abe1b0
+infor_ptr->smbl_ptr=0x1abe1b0
 3089
 haha49
 node_index:78
@@ -360,10 +360,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: c node_type:49 node_inrule_num:-1 node_parent:86 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc2390
-infor_ptr->node_ptr=0x1bc2390
-infor_ptr->smbl_ptr=0x1bc23b0
-infor_ptr->smbl_ptr=0x1bc23b0
+infor_ptr->node_ptr=0x1abe390
+infor_ptr->node_ptr=0x1abe390
+infor_ptr->smbl_ptr=0x1abe3b0
+infor_ptr->smbl_ptr=0x1abe3b0
 3089
 haha49
 todd0111c node_index90
@@ -381,10 +381,10 @@ todd0513xxx stop
 4161: 2
 c
 0512xxx
-infor_ptr->node_ptr=0x1bc2580
-infor_ptr->node_ptr=0x1bc2580
-infor_ptr->smbl_ptr=0x1bc25a0
-infor_ptr->smbl_ptr=0x1bc25a0
+infor_ptr->node_ptr=0x1abe580
+infor_ptr->node_ptr=0x1abe580
+infor_ptr->smbl_ptr=0x1abe5a0
+infor_ptr->smbl_ptr=0x1abe5a0
 0513bb
 3949
 IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:99 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
@@ -394,10 +394,10 @@ todd0513xxx stop
 4161: 0
 a
 0512xxx
-infor_ptr->node_ptr=0x1bc2830
-infor_ptr->node_ptr=0x1bc2830
-infor_ptr->smbl_ptr=0x1bc2850
-infor_ptr->smbl_ptr=0x1bc2850
+infor_ptr->node_ptr=0x1abe830
+infor_ptr->node_ptr=0x1abe830
+infor_ptr->smbl_ptr=0x1abe850
+infor_ptr->smbl_ptr=0x1abe850
 
 0515x1 1
 
@@ -415,10 +415,10 @@ todd0513xxx stop
 4161: 2
 c
 0512xxx
-infor_ptr->node_ptr=0x1bc2b80
-infor_ptr->node_ptr=0x1bc2b80
-infor_ptr->smbl_ptr=0x1bc2ba0
-infor_ptr->smbl_ptr=0x1bc2ba0
+infor_ptr->node_ptr=0x1abeb80
+infor_ptr->node_ptr=0x1abeb80
+infor_ptr->smbl_ptr=0x1abeba0
+infor_ptr->smbl_ptr=0x1abeba0
 
 0515x1 2
 0518 expression_node_index:148
@@ -439,10 +439,10 @@ todd0513xxx stop
 4161: -1
 printf
 0512xxx
-infor_ptr->node_ptr=0x1bc2fe0
-infor_ptr->node_ptr=0x1bc2fe0
-infor_ptr->smbl_ptr=0x1bc3000
-infor_ptr->smbl_ptr=0x1bc3000
+infor_ptr->node_ptr=0x1abefe0
+infor_ptr->node_ptr=0x1abefe0
+infor_ptr->smbl_ptr=0x1abf000
+infor_ptr->smbl_ptr=0x1abf000
 
 0515x1 3
 0518 expression_node_index:186
@@ -689,10 +689,6 @@ alice2: -1
 0521c: start_ins_index:end_ins_index  11:11
 657a:11
 657a:6
-todd0111e mid_ins_index(0)
-todd0111d:
-index(0) node_index(197) category(1) data1_index(declaration_specifiers0) data2_index(declarator0)
- data3_index(declaration_list-1)      data4_index(compound_statement0)
 external_declaration: function_definition
 -------------------------translation_unit: external_declaration
 type_specifier: VOID
@@ -935,10 +931,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a1 node_type:49 node_inrule_num:-1 node_parent:207 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc7b90
-infor_ptr->node_ptr=0x1bc7b90
-infor_ptr->smbl_ptr=0x1bc7bb0
-infor_ptr->smbl_ptr=0x1bc7bb0
+infor_ptr->node_ptr=0x1ac3b90
+infor_ptr->node_ptr=0x1ac3b90
+infor_ptr->smbl_ptr=0x1ac3bb0
+infor_ptr->smbl_ptr=0x1ac3bb0
 3089
 haha49
 todd01081 infor_ptr->first_child:3
@@ -949,10 +945,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a2 node_type:49 node_inrule_num:-1 node_parent:214 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc7cc0
-infor_ptr->node_ptr=0x1bc7cc0
-infor_ptr->smbl_ptr=0x1bc7ce0
-infor_ptr->smbl_ptr=0x1bc7ce0
+infor_ptr->node_ptr=0x1ac3cc0
+infor_ptr->node_ptr=0x1ac3cc0
+infor_ptr->smbl_ptr=0x1ac3ce0
+infor_ptr->smbl_ptr=0x1ac3ce0
 3089
 haha49
 todd0107: node_child_index:222
@@ -962,20 +958,20 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a3 node_type:49 node_inrule_num:-1 node_parent:220 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc7df0
-infor_ptr->node_ptr=0x1bc7df0
-infor_ptr->smbl_ptr=0x1bc7e10
-infor_ptr->smbl_ptr=0x1bc7e10
+infor_ptr->node_ptr=0x1ac3df0
+infor_ptr->node_ptr=0x1ac3df0
+infor_ptr->smbl_ptr=0x1ac3e10
+infor_ptr->smbl_ptr=0x1ac3e10
 3089
 haha49
 haha2 inrule_num:0
 3949
 IDENTIFIER: main node_type:49 node_inrule_num:-1 node_parent:203 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc7ea0
-infor_ptr->node_ptr=0x1bc7ea0
-infor_ptr->smbl_ptr=0x1bc7ec0
-infor_ptr->smbl_ptr=0x1bc7ec0
+infor_ptr->node_ptr=0x1ac3ea0
+infor_ptr->node_ptr=0x1ac3ea0
+infor_ptr->smbl_ptr=0x1ac3ec0
+infor_ptr->smbl_ptr=0x1ac3ec0
 3089
 haha49
 2016todd node_inrule_num=1 node_index=224
@@ -992,10 +988,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:229 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc8050
-infor_ptr->node_ptr=0x1bc8050
-infor_ptr->smbl_ptr=0x1bc8070
-infor_ptr->smbl_ptr=0x1bc8070
+infor_ptr->node_ptr=0x1ac4050
+infor_ptr->node_ptr=0x1ac4050
+infor_ptr->smbl_ptr=0x1ac4070
+infor_ptr->smbl_ptr=0x1ac4070
 3089
 haha49
 node_index:249
@@ -1014,10 +1010,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: b node_type:49 node_inrule_num:-1 node_parent:258 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc8250
-infor_ptr->node_ptr=0x1bc8250
-infor_ptr->smbl_ptr=0x1bc8270
-infor_ptr->smbl_ptr=0x1bc8270
+infor_ptr->node_ptr=0x1ac4250
+infor_ptr->node_ptr=0x1ac4250
+infor_ptr->smbl_ptr=0x1ac4270
+infor_ptr->smbl_ptr=0x1ac4270
 3089
 haha49
 node_index:278
@@ -1036,10 +1032,10 @@ haha2 inrule_num:0
 3949
 IDENTIFIER: c node_type:49 node_inrule_num:-1 node_parent:286 node_parent_inrule_num:0 node_parent_type:28 node_brother_seq:0
 0513a
-infor_ptr->node_ptr=0x1bc8450
-infor_ptr->node_ptr=0x1bc8450
-infor_ptr->smbl_ptr=0x1bc8470
-infor_ptr->smbl_ptr=0x1bc8470
+infor_ptr->node_ptr=0x1ac4450
+infor_ptr->node_ptr=0x1ac4450
+infor_ptr->smbl_ptr=0x1ac4470
+infor_ptr->smbl_ptr=0x1ac4470
 3089
 haha49
 todd0111c node_index290
@@ -1057,10 +1053,10 @@ todd0513xxx stop
 4161: 6
 c
 0512xxx
-infor_ptr->node_ptr=0x1bc8640
-infor_ptr->node_ptr=0x1bc8640
-infor_ptr->smbl_ptr=0x1bc8660
-infor_ptr->smbl_ptr=0x1bc8660
+infor_ptr->node_ptr=0x1ac4640
+infor_ptr->node_ptr=0x1ac4640
+infor_ptr->smbl_ptr=0x1ac4660
+infor_ptr->smbl_ptr=0x1ac4660
 0513bb
 3949
 IDENTIFIER: a node_type:49 node_inrule_num:-1 node_parent:299 node_parent_inrule_num:0 node_parent_type:72 node_brother_seq:0
@@ -1070,10 +1066,10 @@ todd0513xxx stop
 4161: 4
 a
 0512xxx
-infor_ptr->node_ptr=0x1bc88f0
-infor_ptr->node_ptr=0x1bc88f0
-infor_ptr->smbl_ptr=0x1bc8910
-infor_ptr->smbl_ptr=0x1bc8910
+infor_ptr->node_ptr=0x1ac48f0
+infor_ptr->node_ptr=0x1ac48f0
+infor_ptr->smbl_ptr=0x1ac4910
+infor_ptr->smbl_ptr=0x1ac4910
 
 0515x1 5
 
@@ -1091,10 +1087,10 @@ todd0513xxx stop
 4161: 6
 c
 0512xxx
-infor_ptr->node_ptr=0x1bc8c40
-infor_ptr->node_ptr=0x1bc8c40
-infor_ptr->smbl_ptr=0x1bc8c60
-infor_ptr->smbl_ptr=0x1bc8c60
+infor_ptr->node_ptr=0x1ac4c40
+infor_ptr->node_ptr=0x1ac4c40
+infor_ptr->smbl_ptr=0x1ac4c60
+infor_ptr->smbl_ptr=0x1ac4c60
 
 0515x1 6
 0518 expression_node_index:348
@@ -1115,10 +1111,10 @@ todd0513xxx stop
 4161: -1
 printf
 0512xxx
-infor_ptr->node_ptr=0x1bc90a0
-infor_ptr->node_ptr=0x1bc90a0
-infor_ptr->smbl_ptr=0x1bc90c0
-infor_ptr->smbl_ptr=0x1bc90c0
+infor_ptr->node_ptr=0x1ac50a0
+infor_ptr->node_ptr=0x1ac50a0
+infor_ptr->smbl_ptr=0x1ac50c0
+infor_ptr->smbl_ptr=0x1ac50c0
 
 0515x1 7
 0518 expression_node_index:386
@@ -1365,17 +1361,13 @@ alice2: -1
 0521c: start_ins_index:end_ins_index  23:23
 657a:23
 657a:18
-todd0111e mid_ins_index(12)
-todd0111d:
-index(1) node_index(397) category(1) data1_index(declaration_specifiers7) data2_index(declarator7)
- data3_index(declaration_list-1)      data4_index(compound_statement2)
 external_declaration: function_definition
 =========================translation_unit: translation_unit external_declaration
 ----------print_node_table:
 node_index node_parent node_child_num node_type_str node_symbol_index node_line_num node_compound_id
 id(0):type(type_specifier_type[95]):index(0):parent(2):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(0):symbol_index([0]):infor_index(-1):line_num(1):compound_id(0):
 
-id(1):type(IDENTIFIER_type[49]):index(1):parent(3):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(wncbbfunc[0]):infor_index(-1):line_num(1):compound_id(0):
+id(1):type(IDENTIFIER_type[49]):index(1):parent(3):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(main[0]):infor_index(-1):line_num(1):compound_id(0):
 
 id(2):type(declaration_specifiers_type[21]):index(2):parent(197):left_brother(-1):right_brother(25):brother_num(2):brother_seq(0):first_child(0):child_num(1):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
 
@@ -1383,7 +1375,7 @@ id(3):type(direct_declarator_type[28]):index(3):parent(24):left_brother(-1):righ
 
 id(4):type(type_specifier_type[95]):index(4):parent(6):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
 
-id(5):type(IDENTIFIER_type[49]):index(5):parent(7):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(a1[1]):infor_index(-1):line_num(1):compound_id(0):
+id(5):type(IDENTIFIER_type[49]):index(5):parent(7):left_brother(-1):right_brother(-1):brother_num(1):brother_seq(0):first_child(-1):child_num(0):inrule_num(-1):symbol_index(wncbb0111[1]):infor_index(-1):line_num(1):compound_id(0):
 
 id(6):type(declaration_specifiers_type[21]):index(6):parent(9):left_brother(-1):right_brother(8):brother_num(2):brother_seq(0):first_child(4):child_num(1):inrule_num(3):symbol_index([3]):infor_index(-1):line_num(1):compound_id(0):
 
@@ -2572,8 +2564,8 @@ id(398):type(external_declaration_type[39]):index(398):parent(199):left_brother(
                                                +string_type node_id:353 child_number:1 inrule_num:0 line_num:21
                                                 +STRING_LITERAL_type node_id:352 child_number:0 inrule_num:-1 line_num:21
 ---------------------symbol_table:
-id(0):name(wncbbfunc):name_len(9):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(1):
-id(1):name(a1):name_len(2):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(5):
+id(0):name(main):name_len(4):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(1):
+id(1):name(wncbb0111):name_len(9):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(5):
 id(2):name(a2):name_len(2):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(12):
 id(3):name(a3):name_len(2):type(not_know_type[0]):file((null)):file_len(0):line_num:(1):in_which_node(18):
 id(4):name(a):name_len(1):type(not_know_type[0]):file((null)):file_len(0):line_num:(3):in_which_node(27):
@@ -3544,7 +3536,7 @@ IDENTIFIER_table_num:22
 index:0 node_num:1 smbl_num:1 node_index:5 symbol_a_index:-1
  node_id:5
  smbl_id:1
- smbl_name:a1
+ smbl_name:wncbb0111
 --------------------------------------------
 index:1 node_num:1 smbl_num:1 node_index:12 symbol_a_index:-1
  node_id:12
@@ -3559,7 +3551,7 @@ index:2 node_num:1 smbl_num:1 node_index:18 symbol_a_index:-1
 index:3 node_num:1 smbl_num:1 node_index:1 symbol_a_index:-1
  node_id:1
  smbl_id:0
- smbl_name:wncbbfunc
+ smbl_name:main
 --------------------------------------------
 index:4 node_num:1 smbl_num:1 node_index:27 symbol_a_index:-1
 declaration_specifiers_table[0] start
@@ -3749,9 +3741,9 @@ index(1) node_index(210) category(-1) child_num(3) first_child(3)
 ============================================
 function_definition_table_num:2
 --------------------------------------------
-index:0 node_index:197 category:1 data1_index:0 data2_index:0 data3_index:-1 data4_index:0 inst_index:0
+index:0 node_index:197 category:1 data1_index:0 data2_index:0 data3_index:-1 data4_index:0
 --------------------------------------------
-index:1 node_index:397 category:1 data1_index:7 data2_index:7 data3_index:-1 data4_index:2 inst_index:12
+index:1 node_index:397 category:1 data1_index:7 data2_index:7 data3_index:-1 data4_index:2
 --------------------------------------------
 --------------------------------------------
 
