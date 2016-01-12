@@ -3191,7 +3191,7 @@ int deal_compound_statement(int node_index)
     return compound_statement_index;
 }
 
-int deal_direct_declarator_one(int node_index)
+int deal_direct_declarator_one(int node_index, int dd_index)
 {
     int i=0;
     struct node_my *node_ptr=my_state.node_table[node_index];
@@ -3207,7 +3207,8 @@ int deal_direct_declarator_one(int node_index)
     int inrule_num=node_ptr->node_inrule_num;
     printf("haha2 inrule_num:%d\n", inrule_num);
     //printf("20150305002:%d\n", inrule_num);
-    struct direct_declarator_infor *dd_infor=my_state.direct_declarator_table[my_state.direct_declarator_table_num-1];
+    struct direct_declarator_infor *dd_infor=my_state.direct_declarator_table[dd_index];
+    dd_infor->node_index=node_index;
     struct direct_declarator_one_infor * ddo_infor=(struct direct_declarator_one_infor *)malloc(sizeof(struct direct_declarator_one_infor));
 
     struct direct_declarator_one_infor * next_one=NULL; 
@@ -3217,8 +3218,8 @@ int deal_direct_declarator_one(int node_index)
         printf("lib/symbol/smbl_function_.c  deal_direct_declarator_one malloc wrong\n");
     }
     ddo_infor->category=0;   
-    ddo_infor->index1=0;   
-    ddo_infor->index2=0;  
+    ddo_infor->index1=-1;   
+    ddo_infor->index2=-1;  
     ddo_infor->next=NULL;  
 
     int num=dd_infor->number; //
@@ -3245,7 +3246,7 @@ int deal_direct_declarator_one(int node_index)
             ddo_infor->category=0;
       //    ddo_infor->index1=0;//IDENTIFIER index
             ddo_infor->index1=deal_IDENTIFIER(node_ptr->node_first_child, 0);
-            printf("3089\n");
+            printf("3089 index1:%d\n", ddo_infor->index1);
             break;
         case  1:   // ( declarator )
             ddo_infor->category=1;
@@ -3294,6 +3295,7 @@ int deal_direct_declarator_one(int node_index)
             //mask
             int second_child=my_state.node_table[node_ptr->node_first_child]->node_right_brother;
             ddo_infor->index1=deal_parameter_type_list(second_child);
+            printf("wncbb0112a: ddo_infor->index1=%d\n", ddo_infor->index1);
             break;
         case 12:   //direct_declarator ()
             ddo_infor->category=12;
@@ -3379,6 +3381,8 @@ int deal_parameter_list(int node_index)
   printf("todd01055 :node_index:%d child_num:%d\n", node_ptr->node_index, node_ptr->node_child_num);
   struct node_my *child_nptr=my_state.node_table[node_ptr->node_first_child];
   int infor_num=make_parameter_list_infor(node_index);
+  ret=infor_num;
+
   struct parameter_list_infor * infor_ptr=my_state.parameter_list_table[infor_num]; 
   infor_ptr->child_num=child_num;
   int node_child_index=node_ptr->node_first_child;
@@ -3500,7 +3504,8 @@ int deal_direct_declarator(int node_index)
 {
     struct node_my * node_ptr=my_state.node_table[node_index];
     int node_inrule_num=node_ptr->node_inrule_num;
-    printf("haha node_type %d\n", node_ptr->node_type);
+
+    printf("haha123 node_inrule_num %d\n", node_inrule_num);
     int node_type=node_ptr->node_type;
     struct node_my * child_ptr=node_ptr;
     int child_index=node_index;
@@ -3515,7 +3520,7 @@ int deal_direct_declarator(int node_index)
     my_state.direct_declarator_table[my_state.direct_declarator_table_num]=elem_ptr;
     elem_ptr->index=my_state.direct_declarator_table_num;
     elem_ptr->is_IDENTIFIER=0;
-    elem_ptr->node_index=-1;
+    elem_ptr->node_index=node_index;
     elem_ptr->number=0;
     elem_ptr->next=NULL;
 
@@ -3526,8 +3531,8 @@ int deal_direct_declarator(int node_index)
         //while(0!=node_inrule_num)
         while(node_type==28)
         {
-            deal_direct_declarator_one(child_index);
-
+            deal_direct_declarator_one(child_index, elem_ptr->index);
+          
             child_index =child_ptr->node_first_child;
             if(child_index==-1)
             {
@@ -3537,18 +3542,9 @@ int deal_direct_declarator(int node_index)
             //child_index=child_ptr->node_id;
             node_type=child_ptr->node_type;
         }
-        printf("haha%d\n", child_ptr->node_type);
+        printf("haha wtf %d\n", child_ptr->node_type);
     }
 
-    
-    switch(node_inrule_num)
-    {
-    case 11:
-        printf("2016todd node_inrule_num=1 node_index=%d\n", node_index); 
-        
-        break;
-    }
-   
     
     
     return elem_ptr->index;
@@ -3654,6 +3650,7 @@ int smbl_function_definition(int node_index)  //key
     //printf("todd: %s\n", node_type_str[child_1_ptr->node_type]);
     
     data2_index=deal_declarator(child_1_index); 
+        printf("wtf01a\n");
     deal_declarator_belong2_function(data2_index);
 
 //--------------------deal with 2 declaration_list (maybe NULL)
@@ -3674,8 +3671,26 @@ int smbl_function_definition(int node_index)  //key
 
 int deal_declarator_belong2_function(int declarator_index)
 {
+  int ret=-1;
   struct declarator_infor * infor_ptr=my_state.declarator_table[declarator_index];
-  printf("wncbb0111f: %d\n", infor_ptr->node_index);
+  struct direct_declarator_infor * dd_infor=my_state.direct_declarator_table[infor_ptr->direct_declarator_index];
+  struct direct_declarator_one_infor * ddo_para_infor=dd_infor->next;
+  printf("wncbb0112m: ddo_para_infor->category:%d\n", ddo_para_infor->category);
+  
+  if(ddo_para_infor==NULL)
+  {
+    printf("smbl_function_definition.c:deal_declarator_belong2_function wrong1!!!\n");
+  }
+  struct direct_declarator_one_infor * ddo_name_infor=ddo_para_infor->next;
+  struct IDENTIFIER_infor * i_name_infor=my_state.IDENTIFIER_table[ddo_name_infor->index1];
+  //struct IDENTIFIER_infor * func_name_i_infor=my_state.IDENTIFIER_table[func_name_ddo_infor->index1];
+  printf("wtf02b  ");
+  printf("declarator_index:%s\n", i_name_infor->smbl_name);
+  printf("wtf01b\n");
+
+ 
+
+  return ret;
 }
 
 int deal_function_definition_infor(int index)
@@ -3766,6 +3781,7 @@ int deal_declarator(int node_index)
             break;
     }
     infor_ptr->direct_declarator_index=deal_direct_declarator(direct_declarator_2);
+    printf("wtf1a\n");
 
 
 

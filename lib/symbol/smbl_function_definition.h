@@ -611,7 +611,7 @@ int deal_initializer(int node_index);
 
 int deal_compound_statement(int node_index);
 
-int deal_direct_declarator_one(int node_index);
+int deal_direct_declarator_one(int node_index, int dd_index);
 int deal_direct_declarator(int node_index);
 
 

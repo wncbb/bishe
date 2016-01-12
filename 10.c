@@ -1,25 +1,11 @@
-void wncbbfunc(int a1, int a2, int a3)
+int func1(int func1_arg_0, int func1_arg_1)
 {
-  int a=12;
-  int b=13;
-  int c;
-  c=++a;
-  while(c>12)
-  {
-    printf("a");
-  }
+  int func1_in_0=12;
+  int func1_in_1=12;
 }
 
-void main(int a1, int a2, int a3)
+int func2(int func2_arg_0, int func2_arg_1)
 {
-  int a=12;
-  int b=13;
-  int c;
-  c=++a;
-  while(c>12)
-  {
-    printf("a");
-  }
+  int func2_in_0=12;
+  int func2_in_1=12;
 }
-
-
