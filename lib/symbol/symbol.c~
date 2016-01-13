@@ -136,51 +136,31 @@ int symbol_a_add(int action_scope, int node_index)
       return -1;
     }
     int node_type=my_state.node_table[node_index]->node_type;
-    int cur_infor_index=-1;
-    printf("wtf0114a1: node_index:%d type:%d\n", node_index, node_type);
     if(node_type==22)//declaration_type
     {
       printf("wtf0114a1: is declaration_type\n");
-    	cur_infor_index=my_state.symbol_a_table_num;
-      infor_ptr->index=cur_infor_index;
-      my_state.symbol_a_table[cur_infor_index]=infor_ptr;
-      //my_state.symbol_a_table_num+=1;
-      symbol_a_table_num_add();
-      infor_ptr->node_index=node_index;
-      infor_ptr->declaration_specifiers_index=-1;
-      infor_ptr->IDENTIFIER_index=-1;
-      infor_ptr->smbl_name=NULL;
-      infor_ptr->line_num=my_state.node_table[node_index]->node_line_num;
-      infor_ptr->s_type=0;
-      infor_ptr->pointer_index=-1;
-      infor_ptr->array_dimension=0;
-      infor_ptr->every_dimension=NULL;
-      infor_ptr->taint_m=0;
-      infor_ptr->taint_src=infor_ptr->index;
-      infor_ptr->action_scope=action_scope;
     }
     if(node_type==67)//parameter_declaration_type
     {
       printf("wtf0114a1: is parameter_declaration_type\n");
-    	cur_infor_index=my_state.symbol_a_table_num;
-      infor_ptr->index=cur_infor_index;
-      my_state.symbol_a_table[cur_infor_index]=infor_ptr;
-      //my_state.symbol_a_table_num+=1;
-      symbol_a_table_num_add();
-      infor_ptr->node_index=node_index;
-      infor_ptr->declaration_specifiers_index=-1;
-      infor_ptr->IDENTIFIER_index=-1;
-      infor_ptr->smbl_name=NULL;
-      infor_ptr->line_num=my_state.node_table[node_index]->node_line_num;
-      infor_ptr->s_type=0;
-      infor_ptr->pointer_index=-1;
-      infor_ptr->array_dimension=0;
-      infor_ptr->every_dimension=NULL;
-      infor_ptr->taint_m=0;
-      infor_ptr->taint_src=infor_ptr->index;
-      infor_ptr->action_scope=action_scope;
     }
-
+    int cur_infor_index=my_state.symbol_a_table_num;
+    infor_ptr->index=cur_infor_index;
+    my_state.symbol_a_table[cur_infor_index]=infor_ptr;
+    //my_state.symbol_a_table_num+=1;
+    symbol_a_table_num_add();
+    infor_ptr->node_index=node_index;
+    infor_ptr->declaration_specifiers_index=-1;
+    infor_ptr->IDENTIFIER_index=-1;
+    infor_ptr->smbl_name=NULL;
+    infor_ptr->line_num=my_state.node_table[node_index]->node_line_num;
+    infor_ptr->s_type=0;
+    infor_ptr->pointer_index=-1;
+    infor_ptr->array_dimension=0;
+    infor_ptr->every_dimension=NULL;
+    infor_ptr->taint_m=0;
+    infor_ptr->taint_src=infor_ptr->index;
+    infor_ptr->action_scope=action_scope;
 /*
     if(my_state.need_taint_file==1)
     {

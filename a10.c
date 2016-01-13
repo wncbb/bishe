@@ -8,5 +8,4 @@ int func2(int func2_arg_0, int func2_arg_1)
 {
   int func2_in_0=12;
   int func2_in_1=12;
-  func2_in_0=func2_arg_0;
 }

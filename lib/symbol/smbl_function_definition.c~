@@ -3681,46 +3681,38 @@ int deal_declarator_belong2_function(int declarator_index, int action_scope)
   {
     return ret;
   }
-
-
-
-
-
-  if(ddo_para_infor->category==11)
-  {
+  printf("wncbb0112m: ddo_para_infor->category:%d\n", ddo_para_infor->category);
   
-    if(ddo_para_infor==NULL)
-    {
-      printf("smbl_function_definition.c:deal_declarator_belong2_function wrong1!!!\n");
-    }
-    struct direct_declarator_one_infor * ddo_name_infor=ddo_para_infor->next;
-    struct IDENTIFIER_infor * i_name_infor=my_state.IDENTIFIER_table[ddo_name_infor->index1];
-    struct parameter_list_infor * para_list_infor_ptr=my_state.parameter_list_table[ddo_para_infor->index1];
-    struct parameter_declaration_infor * para_decl_infor_ptr=NULL;
-    int para_decl_index=para_list_infor_ptr->first_child;
-    struct symbol_a_infor * symbol_a_infor_ptr=NULL; //symbol_a
-    int symbol_a_index=-1;
-    for(i=0; i<para_list_infor_ptr->child_num; ++i)
-    {
-      para_decl_infor_ptr=my_state.parameter_declaration_table[para_decl_index];
-      symbol_a_index=symbol_a_add(action_scope, para_decl_infor_ptr->node_index);
-      symbol_a_infor_ptr=my_state.symbol_a_table[symbol_a_index]; //symbol_a
-      symbol_a_infor_ptr->declaration_specifiers_index=para_decl_infor_ptr->data1_index;
-      symbol_a_infor_ptr->IDENTIFIER_index=declaratori_return_IDENTIFIERi(para_decl_infor_ptr->data2_index);
-      symbol_a_infor_ptr->smbl_name=my_state.IDENTIFIER_table[symbol_a_infor_ptr->IDENTIFIER_index]->smbl_name;
-
-
-      if(my_state.need_taint_file==1)
-      {
-        symbol_a_infor_ptr->taint_m=is_in_taint_file(symbol_a_infor_ptr->smbl_name, symbol_a_infor_ptr->line_num);
-      }
-                      
-
-      para_decl_index=para_decl_infor_ptr->next_sibling;
-    
-    }
-    return ret;
+  if(ddo_para_infor==NULL)
+  {
+    printf("smbl_function_definition.c:deal_declarator_belong2_function wrong1!!!\n");
   }
+  struct direct_declarator_one_infor * ddo_name_infor=ddo_para_infor->next;
+  struct IDENTIFIER_infor * i_name_infor=my_state.IDENTIFIER_table[ddo_name_infor->index1];
+  //printf("wtf03a : ddo_name_infor->index1:%d\n", ddo_para_infor->index1);
+  struct parameter_list_infor * para_list_infor_ptr=my_state.parameter_list_table[ddo_para_infor->index1];
+  printf("wtf0301a2\n");
+
+  struct parameter_declaration_infor * para_decl_infor_ptr=NULL;
+  int para_decl_index=para_list_infor_ptr->first_child;
+  struct symbol_a_infor * symbol_a_infor_ptr=NULL; //symbol_a
+  int symbol_a_index=-1;
+  for(i=0; i<para_list_infor_ptr->child_num; ++i)
+  {
+    para_decl_infor_ptr=my_state.parameter_declaration_table[para_decl_index];
+    symbol_a_index=symbol_a_add(action_scope, para_decl_infor_ptr->node_index);
+    symbol_a_infor_ptr=my_state.symbol_a_table[symbol_a_index]; //symbol_a
+    symbol_a_infor_ptr->declaration_specifiers_index=para_decl_infor_ptr->data1_index;
+    symbol_a_infor_ptr->IDENTIFIER_index=declaratori_return_IDENTIFIERi(para_decl_infor_ptr->data2_index);
+    symbol_a_infor_ptr->smbl_name=my_state.IDENTIFIER_table[symbol_a_infor_ptr->IDENTIFIER_index]->smbl_name;
+
+    printf("wtf0113a: symbol_a_infor_ptr->IDENTIFIER_index:%d \n", symbol_a_infor_ptr->IDENTIFIER_index);
+    para_decl_index=para_decl_infor_ptr->next_sibling;
+    
+  }
+
+ 
+
   return ret;
 }
 

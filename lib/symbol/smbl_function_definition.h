@@ -743,9 +743,9 @@ int make_parameter_declaration_infor(int node_index);
 
 int deal_function_definition_infor(int index);
 
-int deal_declarator_belong2_function(int declarator_index);
+int deal_declarator_belong2_function(int declarator_index, int action_scope);
 
 
-
+int declaratori_return_IDENTIFIERi(int declarator_index);
 
 
